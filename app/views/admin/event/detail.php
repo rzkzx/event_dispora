@@ -56,7 +56,7 @@
           </div>
           <?php if ($data['event']->aktif) { ?>
             <div class="button col-md-2">
-              <a href="#" class="btn btn-danger mt-15">Akhiri Event</a>
+              <button type="button" class="btn btn-danger mt-15" id="btnAkhiri" data-id="<?= $data['event']->id ?>">Akhiri Event</button>
             </div>
           <?php } ?>
 
@@ -64,7 +64,7 @@
       </div>
 
       <!-- peserta event -->
-      <div class="card-box mb-30">
+      <div class=" card-box mb-30">
         <div class="pd-20">
           <h4 class="text-dark h4">Data Peserta Event</h4>
         </div>
@@ -126,3 +126,44 @@
       <!-- Export Datatable End -->
 
       <?php require APPROOT . '/views/admin/inc/footer.php'; ?>
+
+      <script>
+        function alertConfirmation() {
+          $(document).delegate("#btnAkhiri", "click", function() {
+            Swal.fire({
+              icon: 'warning',
+              title: 'Apakah Event telah berakhir?',
+              showDenyButton: false,
+              showCancelButton: true,
+              confirmButtonText: 'Selesai',
+              cancelButtonText: 'Batal'
+            }).then((result) => {
+              /* Read more about isConfirmed, isDenied below */
+              if (result.isConfirmed) {
+
+                var id = $(this).attr('data-id');
+
+                // Ajax config
+                $.ajax({
+                  type: "POST", //we are using GET method to get data from server side
+                  url: '<?= URLROOT ?>/admin/event/akhiri/' + id, // get the route value
+                  beforeSend: function() { //We add this before send to disable the button once we submit it so that we prevent the multiple click
+
+                  },
+                  success: function(response) { //once the request successfully process to the server side it will return result here
+                    // Reload lists of employees
+                    Swal.fire('Event telah berakhir.', response, 'success').then((result) => {
+                      if (result.isConfirmed) {
+                        window.location.replace("<?= URLROOT ?>/admin/event");
+                      }
+                    });
+                  }
+                });
+
+              } else if (result.isDenied) {
+                Swal.fire('Perubahan tidak disimpan', '', 'info')
+              }
+            });
+          });
+        }
+      </script>

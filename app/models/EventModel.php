@@ -150,4 +150,19 @@ class EventModel
       return false;
     }
   }
+
+  public function akhiri($id)
+  {
+    $query = "UPDATE " . $this->table . " SET aktif=:aktif WHERE id=:id";
+    $this->db->query($query);
+    $this->db->bind('id', $id);
+    $this->db->bind('aktif', FALSE);
+    $this->db->execute();
+
+    if ($this->db->execute()) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
