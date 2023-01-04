@@ -121,8 +121,10 @@ class EventModel
         if ($event->cover == NULL) {
           move_uploaded_file($file['tmp_name'], "../public/assets/images/event/" . $newCover);
         } else {
-          if (unlink(".../public/assets/images/event/" . $event->cover)) {
+          if (unlink("../public/assets/images/event/" . $event->cover)) {
             move_uploaded_file($file['tmp_name'], "../public/assets/images/event/" . $newCover);
+          } else {
+            return false;
           }
         }
       } else {
