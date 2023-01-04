@@ -14,7 +14,7 @@ class Dashboard extends Controller
 
   public function index()
   {
-    $event = $this->eventModel->get(5);
+    $event = $this->eventModel->getByAktif(5);
     $countEvent = count($this->eventModel->get());
 
     $data = [

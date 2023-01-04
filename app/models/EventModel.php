@@ -25,6 +25,19 @@ class EventModel
     return $result;
   }
 
+  public function getByAktif($limit = '')
+  {
+    if ($limit > 0) {
+      $this->db->query('SELECT * FROM ' . $this->table . ' WHERE aktif IS TRUE ORDER BY id DESC LIMIT ' . $limit);
+    } else {
+      $this->db->query('SELECT * FROM ' . $this->table . ' WHERE aktif IS TRUE ORDER BY id DESC');
+    }
+
+    $result = $this->db->resultSet();
+
+    return $result;
+  }
+
   public function getById($id)
   {
     $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id = :id');
