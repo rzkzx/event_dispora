@@ -18,47 +18,57 @@ class User extends Controller
     $this->userModel = $this->model('UserModel');
   }
 
-  // Agenda Event Controller
+  // Profil User Controller
   public function index()
   {
-    // get data all event
-    $event = $this->eventModel->get();
-
-    $data = [
-      'title' => 'Agenda Event',
-      'menu' => 'Event',
-      'submenu' => 'Agenda Event',
-      'event' => $event
-    ];
-
-
-    // call view
-    $this->view('admin/event/index', $data);
-  }
-
-
-  // Detail Event Controller
-  public function profil()
-  {
-    // get data event with id
-
     $data = [
       'title' => 'Profil',
-      'menu' => 'Event',
-      'submenu' => 'Agenda Event',
+      'menu' => '',
+      'submenu' => '',
     ];
 
     $this->view('admin/profil/index', $data);
   }
 
+  // Akun Instansi Controller
+  public function instansi()
+  {
+    // get data all event
+    // $event = $this->eventModel->get();
 
-  // Buat Event Controller
-  public function add()
+    $data = [
+      'title' => 'Akun Instansi',
+      'menu' => 'Pengguna',
+      'submenu' => 'Akun Instansi',
+    ];
+
+    // call view
+    $this->view('admin/pengguna/instansi', $data);
+  }
+
+  // Akun Instansi Controller
+  public function peserta()
+  {
+    // get data all event
+    // $event = $this->eventModel->get();
+
+    $data = [
+      'title' => 'Akun Peserta',
+      'menu' => 'Pengguna',
+      'submenu' => 'Akun Peserta',
+    ];
+
+    // call view
+    $this->view('admin/pengguna/peserta', $data);
+  }
+
+  // Tambah Akun Instansi Controller
+  public function addinstansi()
   {
     $data = [
-      'title' => 'Buat Event',
-      'menu' => 'Event',
-      'submenu' => 'Buat Event'
+      'title' => 'Tambahkan Akun Instansi',
+      'menu' => 'Pengguna',
+      'submenu' => 'Tambahkan Akun Instansi'
     ];
 
     //if event get posted by submit
@@ -77,7 +87,7 @@ class User extends Controller
         }
       }
     } else {
-      $this->view('admin/event/add', $data);
+      $this->view('admin/pengguna/add_instansi', $data);
     }
   }
 

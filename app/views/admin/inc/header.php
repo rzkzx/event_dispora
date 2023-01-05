@@ -105,7 +105,7 @@
             <span class="user-name"><?= $_SESSION['nama'] ?></span>
           </a>
           <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-            <a class="dropdown-item" href="<?= URLROOT; ?>/admin/user/profil"><i class="dw dw-user1"></i> Profile</a>
+            <a class="dropdown-item" href="<?= URLROOT; ?>/admin/user"><i class="dw dw-user1"></i> Profile</a>
             <a class="dropdown-item" href="<?= URLROOT; ?>/admin/login/logout"><i class="dw dw-logout"></i> Log Out</a>
           </div>
         </div>

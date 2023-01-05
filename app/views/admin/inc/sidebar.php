@@ -24,14 +24,14 @@
             <li><a href="<?= URLROOT; ?>/admin/event" class="<?php echo ($data['submenu'] == 'Agenda Event') ? 'active' : ''; ?>">Agenda Event</a></li>
           </ul>
         </li>
-        <li class="dropdown">
+        <li class="dropdown <?php echo ($data['menu'] == 'Pengguna') ? 'show' : ''; ?>">
           <a href="javascript:;" class="dropdown-toggle">
             <span class="micon bi bi-person-fill"></span><span class="mtext">Kelola Pengguna</span>
           </a>
-          <ul class="submenu">
-            <li><a href="<?= URLROOT; ?>/admin/user/instansi">Akun Instansi</a></li>
-            <li><a href="<?= URLROOT; ?>/admin/user/addinstansi">Tambahkan Akun Instansi</a></li>
-            <li><a href="<?= URLROOT; ?>/admin/user/peserta">Akun Peserta</a></li>
+          <ul class="submenu" <?php echo ($data['menu'] == 'Pengguna') ? 'style="display:block;"' : ''; ?>>
+            <li><a href="<?= URLROOT; ?>/admin/user/instansi" class="<?php echo ($data['submenu'] == 'Akun Instansi') ? 'active' : ''; ?>">Akun Instansi</a></li>
+            <li><a href="<?= URLROOT; ?>/admin/user/addinstansi" class="<?php echo ($data['submenu'] == 'Tambahkan Akun Instansi') ? 'active' : ''; ?>">Tambahkan Akun Instansi</a></li>
+            <li><a href="<?= URLROOT; ?>/admin/user/peserta" class="<?php echo ($data['submenu'] == 'Akun Peserta') ? 'active' : ''; ?>">Akun Peserta</a></li>
           </ul>
         </li>
         <li>
