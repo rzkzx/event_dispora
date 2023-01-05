@@ -31,4 +31,31 @@ class Event extends Controller
 
     $this->view('event/khusus', $data);
   }
+
+  public function detail($id = '')
+  {
+    // get data event with id
+    $event = $this->eventModel->getById($id);
+
+    if ($event) {
+      $data = [
+        'title' => 'Detail Event',
+        'event' => $event
+      ];
+
+      //replace new line on text mysql to <br> html
+      $data['event']->deskripsi = preg_replace("/\r\n|\r|\n/", '<br/>', $data['event']->deskripsi);
+
+      //check event have a cover
+      if ($data['event']->cover) {
+        $data['event']->cover = $data['event']->cover;
+      } else {
+        $data['event']->cover = 'noimage.jpg';
+      }
+
+      $this->view('event/detail', $data);
+    } else {
+      return redirect('event');
+    }
+  }
 }
