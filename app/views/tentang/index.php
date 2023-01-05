@@ -7,7 +7,7 @@
       <div class="container position-relative">
         <div class="row d-flex justify-content-center">
           <div class="col-lg-6 text-center">
-            <h4> <?= $data['title'] ?></h4>
+            <h4><?= $data['title'] ?></h4>
           </div>
         </div>
       </div>
@@ -15,8 +15,8 @@
     <nav>
       <div class="container">
         <ol>
-          <li><a href="index.html">Home</a></li>
-          <li>Profil</li>
+          <li><a href="<?= URLROOT ?>/beranda">Home</a></li>
+          <li><?= $data['title'] ?></li>
         </ol>
       </div>
     </nav>

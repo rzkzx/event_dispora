@@ -61,7 +61,7 @@
       <!-- navbar -->
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="#hero">Beranda</a></li>
+          <li><a href="<?= URLROOT; ?>/beranda">Beranda</a></li>
           <li class="dropdown"><a href="#profil"><span>Tentang</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
           </li>
@@ -74,11 +74,11 @@
         <li class="dropdown"><a href="#event"><span>Event</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
           <ul>
         </li>
-        <li><a href="event-umum.html">Event Umum</a></li>
-        <li><a href="event-khusus.html">Event Khusus</a></li>
+        <li><a href="<?= URLROOT; ?>/event">Event Umum</a></li>
+        <li><a href="<?= URLROOT; ?>/event/khusus">Event Khusus</a></li>
         </ul>
         </li>
-        <li><a href="#contact">Kontak</a></li>
+        <li><a href="<?= URLROOT; ?>/beranda#contact">Kontak</a></li>
         <li><a href="login.html">Login</a></li>
         </ul>
       </nav><!-- navbar -->
