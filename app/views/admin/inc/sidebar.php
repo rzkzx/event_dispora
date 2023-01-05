@@ -35,7 +35,7 @@
           </ul>
         </li>
         <li>
-          <a href="kritik-tanya.html" class="dropdown-toggle no-arrow">
+          <a href="<?= URLROOT; ?>/admin/saran" class="dropdown-toggle no-arrow <?php echo ($data['menu'] == 'Saran') ? 'active' : ''; ?>">
             <span class="micon bi bi-chat-dots-fill"></span><span class="mtext">Kritik dan Tanya</span>
           </a>
       </ul>

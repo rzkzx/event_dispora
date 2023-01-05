@@ -239,27 +239,25 @@
         </div>
 
         <div class="col-lg-6">
-          <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+          <form action="<?= URLROOT ?>/beranda/saran" method="post" role="form" class="php-pesan-form">
+            <?php flash() ?>
             <div class="row">
               <div class="col form-group">
-                <input type="text" name="name" class="form-control" id="name" placeholder="Nama" required>
+                <input type="text" name="nama" class="form-control" id="name" placeholder="Nama" required>
               </div>
               <div class="col form-group">
                 <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
               </div>
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" name="subject" id="Nomor" placeholder="Nomor Telpon" required>
+              <input type="text" class="form-control" name="no_hp" id="Nomor" placeholder="Nomor Telpon" required>
             </div>
             <div class="form-group">
-              <textarea class="form-control" name="message" rows="5" placeholder="Pesan Kritik, Saran dan Pertanyaan" required></textarea>
+              <textarea class="form-control" name="pesan" rows="5" placeholder="Pesan Kritik, Saran dan Pertanyaan" required></textarea>
             </div>
-            <div class="my-3">
-              <div class="loading">Loading</div>
-              <div class="error-message"></div>
-              <div class="sent-message">Pesan Terkirim, Terima Kasih!</div>
+            <div class="text-center">
+              <input type="submit" value="Kirim Pesan">
             </div>
-            <div class="text-center"><button type="submit">Kirim Pesan</button></div>
           </form>
         </div>
 

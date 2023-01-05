@@ -6,6 +6,11 @@ function redirect($page)
     header('location: ' . URLROOT . '/' . $page);
 }
 
+function reload()
+{
+    header("Refresh:0");
+}
+
 function setFlash($message, $type)
 {
     $_SESSION['msg'] = [
