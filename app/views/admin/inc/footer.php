@@ -1,5 +1,7 @@
 <div class="footer-wrap pd-20 mb-20 card-box">
   <p class="text-uppercase fs-6">situs resmi pemerintah provinsi kalimantan selatan 2022</p>
+  <img src="<?= URLROOT; ?>/assets/images/stmik.png" alt="" style="max-width: 30px;">
+  <span>STMIK BANJARBARU</span>
 </div>
 </div>
 </div>

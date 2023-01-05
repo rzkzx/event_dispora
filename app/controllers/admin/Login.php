@@ -54,6 +54,7 @@ class Login extends Controller
     $_SESSION['username'] = $user->username;
     $_SESSION['level'] = $user->level_user;
     $_SESSION['jabatan'] = $user->jabatan;
+    $_SESSION['foto'] = $user->foto;
     $_SESSION['waktu_login'] = date('Y-m-d H:i:s');
     return redirect('admin/dashboard');
   }
@@ -68,6 +69,7 @@ class Login extends Controller
     unset($_SESSION['username']);
     unset($_SESSION['level']);
     unset($_SESSION['jabatan']);
+    unset($_SESSION['foto']);
     session_destroy();
     return redirect('admin/login');
   }

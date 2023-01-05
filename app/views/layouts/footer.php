@@ -52,12 +52,17 @@
     </div>
   </div>
 
-  <div class="container mt-4">
-    <div class="copyright">
-      &copy; Copyright <strong><span>Dispora Prov</span></strong>. All Rights Reserved
-    </div>
-    <div class="credits">
-      Designed by <a href="https://bootstrapmade.com/">MELYANA</a>
+  <div class="container mt-6">
+    <div class="d-flex" style="justify-content:space-between;align-items:center; margin-top:20px;">
+      <div class="credits">
+        <a href="http://www.stmik-banjarbaru.ac.id" class="">
+          <img src="<?= URLROOT; ?>/assets/images/stmik.png" alt="logo" style="height:40px; object-fit:cover;">
+          <span style="font-weight: bold; font-size: 16px;margin-left:10px;">STMIK BANJARBARU</span>
+        </a>
+      </div>
+      <div class="copyright">
+        &copy; Copyright <strong><span>Dispora Prov</span></strong>. All Rights Reserved <br>
+      </div>
     </div>
   </div>
 

@@ -29,9 +29,9 @@
             <span class="micon bi bi-person-fill"></span><span class="mtext">Kelola Pengguna</span>
           </a>
           <ul class="submenu">
-            <li><a href="page-data-user.html">Data User</a></li>
-            <li><a href="tambah-user.html">Tambahkan User</a></li>
-            <li><a href="page-data-pengguna.html">Data Pengguna</a></li>
+            <li><a href="<?= URLROOT; ?>/admin/user/instansi">Akun Instansi</a></li>
+            <li><a href="<?= URLROOT; ?>/admin/user/addinstansi">Tambahkan Akun Instansi</a></li>
+            <li><a href="<?= URLROOT; ?>/admin/user/peserta">Akun Peserta</a></li>
           </ul>
         </li>
         <li>
