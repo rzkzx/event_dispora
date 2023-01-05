@@ -9,6 +9,11 @@ class Event extends Controller
       return redirect('admin/login');
     }
 
+    // check auth back access
+    if (!Middleware::backAuth()) {
+      return redirect('beranda');
+    }
+
     //new model instance
     $this->eventModel = $this->model('EventModel');
   }
