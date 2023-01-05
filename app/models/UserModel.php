@@ -53,6 +53,39 @@ class UserModel
     return $row;
   }
 
+  public function add($data, $file)
+  {
+    $temp = $file['tmp_name'];
+    $size = $file['size'];
+
+    if ($file["name"]) {
+      $file_extension = pathinfo($file['name'], PATHINFO_EXTENSION);
+      $nama_file = rand(100, 100000) . '-' . $data['username'] . '.' . $file_extension;;
+
+      if ($size < 50000 * 1000) {
+        move_uploaded_file($temp, "../public/assets/images/user/" . $nama_file);
+      } else {
+        return 0;
+      }
+    } else {
+      $nama_file = NULL;
+    }
+
+    $query = "INSERT INTO users (username, level_user, nama, password, jabatan, foto) 
+    VALUES (:username, :level_user, :nama, :password, :jabatan, :foto)";
+
+    $this->db->query($query);
+    $this->db->bind('username', $data['username']);
+    $this->db->bind('level_user', $data['level']);
+    $this->db->bind('nama', $data['nama']);
+    $this->db->bind('password', password_hash($data['password'], PASSWORD_DEFAULT));
+    $this->db->bind('jabatan', $data['jabatan']);
+    $this->db->bind('foto', $nama_file);
+    $this->db->execute();
+
+    return $this->db->rowCount();
+  }
+
   public function changePassword($data)
   {
     $query = "SELECT * FROM users WHERE username = :username";

@@ -29,6 +29,7 @@
           <h4 class="text-blue h4">Data Akun Instansi</h4>
         </div>
         <div class="pb-20">
+          <?php flash(); ?>
           <table class="data-tableee table stripe hover nowrap">
             <thead>
               <tr>

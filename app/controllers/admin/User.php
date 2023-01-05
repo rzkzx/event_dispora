@@ -74,14 +74,14 @@ class User extends Controller
     //if event get posted by submit
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-      if (empty($_POST['nama']) || empty($_POST['jenis']) || empty($_POST['jenjang']) || empty($_POST['deskripsi']) || empty($_POST['tanggal']) || empty($_POST['lokasi'])) {
+      if (empty($_POST['level']) || empty($_POST['nama']) || empty($_POST['jabatan']) || empty($_POST['username']) || empty($_POST['password'])) {
         //load view with error
         setFlash('Form input tidak boleh kosong', 'danger');
-        return redirect('admin/event/add');
+        return redirect('admin/user/addinstansi');
       } else {
-        if ($this->eventModel->add($_POST, $_FILES['foto'])) {
-          setFlash('Event terbaru berhasil ditambahkan.', 'success');
-          return redirect('admin/event');
+        if ($this->userModel->add($_POST, $_FILES['foto'])) {
+          setFlash('Pengguna terbaru berhasil ditambahkan.', 'success');
+          return redirect('admin/user/instansi');
         } else {
           die('something went wrong');
         }
