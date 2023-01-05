@@ -10,7 +10,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link rel="shortcut icon" href="<?= URLROOT; ?>/font/img/logo/kalsel-small.png" type="image/x-icon">
+  <link rel="shortcut icon" href="<?= URLROOT; ?>/front/img/logo/kalsel-small.png" type="image/x-icon">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -65,10 +65,10 @@
           <li class="dropdown"><a href="#profil"><span>Tentang</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
           </li>
-          <li><a href="tentang.html">Sejarah Dinas</a></li>
-          <li><a href="tentang.html">Visi dan Misi</a></li>
-          <li><a href="tentang.html">Profil Kepala Dinas</a></li>
-          <li><a href="tentang.html">Struktur Organisasi</a></li>
+          <li><a href="<?= URLROOT; ?>/tentang">Sejarah Dinas</a></li>
+          <li><a href="<?= URLROOT; ?>/tentang">Visi dan Misi</a></li>
+          <li><a href="<?= URLROOT; ?>/tentang">Profil Kepala Dinas</a></li>
+          <li><a href="<?= URLROOT; ?>/tentang">Struktur Organisasi</a></li>
         </ul>
         </li>
         <li class="dropdown"><a href="#event"><span>Event</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
