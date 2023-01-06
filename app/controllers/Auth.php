@@ -24,7 +24,7 @@ class Auth extends Controller
           setFlash('Username atau Password Salah', 'danger');
           return redirect('auth');
         } else {
-          $loggedInUser = $this->userModel->addPeserta($data['username'], $data['password']);
+          $loggedInUser = $this->userModel->login($data['username'], $data['password']);
           if ($loggedInUser) {
             //create session
             $this->createUserSession($loggedInUser);
@@ -88,7 +88,7 @@ class Auth extends Controller
     $_SESSION['jabatan'] = $user->jabatan;
     $_SESSION['foto'] = $user->foto;
     $_SESSION['waktu_login'] = date('Y-m-d H:i:s');
-    return redirect('admin/dashboard');
+    return redirect('profil');
   }
 
   //logout and destroy user session
@@ -103,6 +103,6 @@ class Auth extends Controller
     unset($_SESSION['jabatan']);
     unset($_SESSION['foto']);
     session_destroy();
-    return redirect('admin/login');
+    return redirect('auth/login');
   }
 }
