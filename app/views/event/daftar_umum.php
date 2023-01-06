@@ -57,8 +57,8 @@
                   <div class="col-md-6">
                     <label for="validationCustom04" class="form-label">Jenis Kelamin</label>
                     <select class="form-select" id="validationCustom04" required name="jenis_kelamin">
-                      <option value="Perempuan">Perempuan</option>
-                      <option value="Laki-Laki">Laki-laki</option>
+                      <option value="Laki-Laki" <?php echo ($data['user']->jenis_kelamin == 'Laki-Laki') ? 'selected' : '' ?>>Laki-laki</option>
+                      <option value="Perempuan" <?php echo ($data['user']->jenis_kelamin == 'Perempuan') ? 'selected' : '' ?>>Perempuan</option>
                     </select>
                     <div class="invalid-feedback">
                       Mohon pilih jenis kelamin anda.
