@@ -33,61 +33,74 @@ class User extends Controller
   // Akun Instansi Controller
   public function instansi()
   {
-    // get data all event
-    // $event = $this->eventModel->get();
+    if (Middleware::isAdmin()) {
+      // get data all event
+      $users = $this->userModel->getUserInstansi();
 
-    $data = [
-      'title' => 'Akun Instansi',
-      'menu' => 'Pengguna',
-      'submenu' => 'Akun Instansi',
-    ];
+      $data = [
+        'title' => 'Akun Instansi',
+        'menu' => 'Pengguna',
+        'submenu' => 'Akun Instansi',
+        'users' => $users
+      ];
 
-    // call view
-    $this->view('admin/pengguna/instansi', $data);
+      // call view
+      $this->view('admin/pengguna/instansi', $data);
+    } else {
+      return redirect('admin/login');
+    }
   }
 
   // Akun Instansi Controller
   public function peserta()
   {
-    // get data all event
-    // $event = $this->eventModel->get();
+    if (Middleware::isAdmin()) {
+      // get data all event
+      // $event = $this->eventModel->get();
 
-    $data = [
-      'title' => 'Akun Peserta',
-      'menu' => 'Pengguna',
-      'submenu' => 'Akun Peserta',
-    ];
+      $data = [
+        'title' => 'Akun Peserta',
+        'menu' => 'Pengguna',
+        'submenu' => 'Akun Peserta',
+      ];
 
-    // call view
-    $this->view('admin/pengguna/peserta', $data);
+      // call view
+      $this->view('admin/pengguna/peserta', $data);
+    } else {
+      return redirect('admin/login');
+    }
   }
 
   // Tambah Akun Instansi Controller
   public function addinstansi()
   {
-    $data = [
-      'title' => 'Tambahkan Akun Instansi',
-      'menu' => 'Pengguna',
-      'submenu' => 'Tambahkan Akun Instansi'
-    ];
+    if (Middleware::isAdmin()) {
+      $data = [
+        'title' => 'Tambahkan Akun Instansi',
+        'menu' => 'Pengguna',
+        'submenu' => 'Tambahkan Akun Instansi'
+      ];
 
-    //if event get posted by submit
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-      $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-      if (empty($_POST['level']) || empty($_POST['nama']) || empty($_POST['jabatan']) || empty($_POST['username']) || empty($_POST['password'])) {
-        //load view with error
-        setFlash('Form input tidak boleh kosong', 'danger');
-        return redirect('admin/user/addinstansi');
-      } else {
-        if ($this->userModel->add($_POST, $_FILES['foto'])) {
-          setFlash('Pengguna terbaru berhasil ditambahkan.', 'success');
-          return redirect('admin/user/instansi');
+      //if event get posted by submit
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        if (empty($_POST['level']) || empty($_POST['nama']) || empty($_POST['jabatan']) || empty($_POST['username']) || empty($_POST['password'])) {
+          //load view with error
+          setFlash('Form input tidak boleh kosong', 'danger');
+          return redirect('admin/user/addinstansi');
         } else {
-          die('something went wrong');
+          if ($this->userModel->add($_POST, $_FILES['foto'])) {
+            setFlash('Pengguna terbaru berhasil ditambahkan.', 'success');
+            return redirect('admin/user/instansi');
+          } else {
+            die('something went wrong');
+          }
         }
+      } else {
+        $this->view('admin/pengguna/add_instansi', $data);
       }
     } else {
-      $this->view('admin/pengguna/add_instansi', $data);
+      return redirect('admin/login');
     }
   }
 

@@ -26,7 +26,19 @@ class UserModel
 
   public function getAll()
   {
-    $this->db->query('SELECT * FROM users');
+    $this->db->query('SELECT * FROM users ORDER BY id DESC');
+    $row = $this->db->resultSet();
+
+    return $row;
+  }
+
+  public function getUserInstansi()
+  {
+    $level = 'peserta';
+
+    $this->db->query('SELECT * FROM users WHERE level_user != :level ORDER BY id DESC');
+    $this->db->bind(':level', $level);
+
     $row = $this->db->resultSet();
 
     return $row;

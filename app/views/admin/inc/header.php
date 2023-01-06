@@ -100,7 +100,7 @@
         <div class="dropdown">
           <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
             <span class="user-icon">
-              <img src="<?= URLROOT; ?>/back/images/man.png" alt="" />
+              <img src="<?= URLROOT; ?>/assets/images/user/<?php echo ($_SESSION['foto']) ? $_SESSION['foto'] : 'man.png'; ?>" alt="" />
             </span>
             <span class="user-name"><?= $_SESSION['nama'] ?></span>
           </a>

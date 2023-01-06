@@ -25,4 +25,12 @@ class Middleware extends Controller
     }
     return false;
   }
+
+  public static function isAdmin()
+  {
+    if ($_SESSION['level'] == 'admin') {
+      return true;
+    }
+    return false;
+  }
 }
