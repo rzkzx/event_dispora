@@ -56,12 +56,13 @@ class User extends Controller
   {
     if (Middleware::isAdmin()) {
       // get data all event
-      // $event = $this->eventModel->get();
+      $users = $this->userModel->getUserPeserta();
 
       $data = [
         'title' => 'Akun Peserta',
         'menu' => 'Pengguna',
         'submenu' => 'Akun Peserta',
+        'users' => $users
       ];
 
       // call view
