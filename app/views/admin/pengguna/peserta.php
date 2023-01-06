@@ -32,11 +32,12 @@
           <table class="data-tableee table stripe hover nowrap">
             <thead>
               <tr>
+                <th>No</th>
                 <th class="table-plus datatable-nosort">Nama Lengkap</th>
                 <th>NIK</th>
                 <th>Tanggal Lahir</th>
                 <th>Alamat Domisili</th>
-                <th>Email</th>
+                <th>Jenis Kelamin</th>
                 <th class="datatable-nosort">Action</th>
               </tr>
             </thead>
@@ -46,11 +47,12 @@
               foreach ($data['users'] as $user) {
               ?>
                 <tr>
-                  <td class="table-plus">Gloria F. Mead</td>
-                  <td>25</td>
-                  <td>Sagittarius</td>
-                  <td>2829 Trainer Avenue Peoria, IL 61602</td>
-                  <td>29-03-2018</td>
+                  <td><?= $no ?></td>
+                  <td class="table-plus"><?= $user->nama ?></td>
+                  <td><?= $user->nik ?></td>
+                  <td><?= dateID($user->tanggal_lahir) ?></td>
+                  <td><?= $user->alamat_dom ?></td>
+                  <td><?= $user->jenis_kelamin ?></td>
                   <td>
                     <div class="dropdown">
                       <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">

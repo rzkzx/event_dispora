@@ -34,8 +34,10 @@ class UserModel
 
   public function getUserInstansi()
   {
-    $this->db->query('SELECT * FROM user_peserta ORDER BY id DESC');
+    $level = 'peserta';
 
+    $this->db->query('SELECT * FROM users WHERE level_user != :level ORDER BY id DESC');
+    $this->db->bind(':level', $level);
     $row = $this->db->resultSet();
 
     return $row;
@@ -43,10 +45,7 @@ class UserModel
 
   public function getUserPeserta()
   {
-    $level = 'peserta';
-
-    $this->db->query('SELECT * FROM users WHERE level_user = :level ORDER BY id DESC');
-    $this->db->bind(':level', $level);
+    $this->db->query('SELECT * FROM user_peserta ORDER BY id DESC');
 
     $row = $this->db->resultSet();
 
@@ -101,6 +100,57 @@ class UserModel
     $this->db->bind('nama', $data['nama']);
     $this->db->bind('password', password_hash($data['password'], PASSWORD_DEFAULT));
     $this->db->bind('jabatan', $data['jabatan']);
+    $this->db->bind('foto', $nama_file);
+    $this->db->execute();
+
+    return $this->db->rowCount();
+  }
+
+  public function addPeserta($data, $file)
+  {
+    $temp = $file['tmp_name'];
+    $size = $file['size'];
+
+    if ($file["name"]) {
+      $file_extension = pathinfo($file['name'], PATHINFO_EXTENSION);
+      $nama_file = rand(100, 100000) . '-' . $data['username'] . '.' . $file_extension;;
+
+      if ($size < 50000 * 1000) {
+        move_uploaded_file($temp, "../public/assets/images/user/" . $nama_file);
+      } else {
+        return 0;
+      }
+    } else {
+      $nama_file = NULL;
+    }
+
+    $query = "INSERT INTO users (username, level_user, nama, password, foto) 
+    VALUES (:username, :level_user, :nama, :password, :foto)";
+
+    $this->db->query($query);
+    $this->db->bind('username', $data['username']);
+    $this->db->bind('level_user', 'peserta');
+    $this->db->bind('nama', $data['nama']);
+    $this->db->bind('password', password_hash($data['password'], PASSWORD_DEFAULT));
+    $this->db->bind('foto', $nama_file);
+    $this->db->execute();
+    $id = $this->db->lastInsertId();
+
+    $query = "INSERT INTO user_peserta (id_user, nama, nik, jenis_kelamin, tempat_lahir, tanggal_lahir, alamat_ktp, alamat_dom, pendidikan, pekerjaan, no_hp, foto) 
+    VALUES (:id_user, :nama, :nik, :jenis_kelamin, :tempat_lahir, :tanggal_lahir, :alamat_ktp, :alamat_dom, :pendidikan, :pekerjaan, :no_hp, :foto)";
+
+    $this->db->query($query);
+    $this->db->bind('id_user', $id);
+    $this->db->bind('nama', $data['nama']);
+    $this->db->bind('nik', $data['nik']);
+    $this->db->bind('jenis_kelamin', $data['jenis_kelamin']);
+    $this->db->bind('tempat_lahir', $data['tempat_lahir']);
+    $this->db->bind('tanggal_lahir', $data['tgl_lahir']);
+    $this->db->bind('alamat_ktp', $data['alamat_ktp']);
+    $this->db->bind('alamat_dom', $data['alamat_dom']);
+    $this->db->bind('pendidikan', $data['pendidikan']);
+    $this->db->bind('pekerjaan', $data['pekerjaan']);
+    $this->db->bind('no_hp', $data['no_hp']);
     $this->db->bind('foto', $nama_file);
     $this->db->execute();
 

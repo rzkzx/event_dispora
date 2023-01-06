@@ -81,7 +81,6 @@
 <script src="<?= URLROOT; ?>/front/vendor/swiper/swiper-bundle.min.js"></script>
 <script src="<?= URLROOT; ?>/front/vendor/isotope-layout/isotope.pkgd.min.js"></script>
 <script src="<?= URLROOT; ?>/front/vendor/php-email-form/validate.js"></script>
-
 <!-- Template Main JS File -->
 <script src="<?= URLROOT; ?>/front/js/main.js"></script>
 

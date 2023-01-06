@@ -55,7 +55,7 @@
           </div>
           <div class="form-group">
             <label>Password</label>
-            <input class="form-control" value="password" type="password" name="password" />
+            <input class="form-control" placeholder="password" type="password" name="password" />
           </div>
           <div class="form-group">
             <label>Foto Profile</label>
