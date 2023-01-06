@@ -54,7 +54,15 @@
               </div>
               <div class="d-grid gap-2">
                 <br>
-                <button class="btn btn-outline-warning" type="button"><a href="form-daftar.html">Daftar Event</a></button>
+                <?php if (!$data['event']->aktif) { ?>
+                  <h4><i>"Event telah berakhir"</i></h4>
+                <?php
+                } else {
+                ?>
+                  <a href="<?= URLROOT ?>/event/pendaftaran/<?= $data['event']->id ?>" class="btn btn-outline-warning">Daftar Event</a>
+                <?php
+                } ?>
+
               </div>
 
               <!-- End post content -->

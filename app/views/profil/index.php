@@ -26,7 +26,7 @@
   <!-- ======= Profile Details Section ======= -->
   <section id="blog" class="blog">
     <div class="container" data-aos="fade-up">
-
+      <?php flash() ?>
       <div class="row g-5">
 
         <div class="col-lg-4">
@@ -59,9 +59,6 @@
                 <li class="nav-item">
                   <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Pengaturan Akun</button>
                 </li>
-
-
-
                 <li class="nav-item">
                   <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Ubah Password</button>
                 </li>

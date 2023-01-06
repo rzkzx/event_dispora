@@ -4,7 +4,7 @@ class EventModel
 {
   private $db;
   private $table = 'detail_event';
-
+  private $daftarUmum = 'form_pendaftaran';
 
   public function __construct()
   {
@@ -177,5 +177,59 @@ class EventModel
     } else {
       return false;
     }
+  }
+
+  public function daftarUmum($id_peserta, $data, $files)
+  {
+    $file_identitas = $files['identitas'];
+    $file_syarat = $files['syarat'];
+
+    if ($file_identitas["name"]) {
+      $file_extension = pathinfo($file_identitas['name'], PATHINFO_EXTENSION);
+      $identitas = rand(100, 100000) . '-' . $data['nik'] . '.' . $file_extension;;
+
+      if ($file_identitas['size'] < 50000 * 1000) {
+        move_uploaded_file($file_identitas['tmp_name'], "../public/assets/file/identitas/" . $identitas);
+      } else {
+        return 0;
+      }
+    } else {
+      $identitas = NULL;
+    }
+
+    if ($file_syarat["name"]) {
+      $file_extension = pathinfo($file_syarat['name'], PATHINFO_EXTENSION);
+      $syarat = rand(100, 100000) . '-' . $data['nik'] . '.' . $file_extension;;
+
+      if ($file_syarat['size'] < 50000 * 1000) {
+        move_uploaded_file($file_syarat['tmp_name'], "../public/assets/file/syarat/" . $syarat);
+      } else {
+        return 0;
+      }
+    } else {
+      $syarat = NULL;
+    }
+
+    $query = "INSERT INTO " . $this->daftarUmum . " (id_event, id_peserta, nama, nik, jenis_kelamin, tempat_lahir, tanggal_lahir, alamat_ktp, alamat_dom, pendidikan, pekerjaan, no_hp, upload_identitas, berkas_syarat) 
+    VALUES (:id_event, :id_peserta, :nama, :nik, :jenis_kelamin, :tempat_lahir, :tanggal_lahir, :alamat_ktp, :alamat_dom, :pendidikan, :pekerjaan, :no_hp, :upload_identitas, :berkas_syarat)";
+
+    $this->db->query($query);
+    $this->db->bind('id_event', $data['event_id']);
+    $this->db->bind('id_peserta', $id_peserta);
+    $this->db->bind('nama', $data['nama']);
+    $this->db->bind('nik', $data['nik']);
+    $this->db->bind('jenis_kelamin', $data['jenis_kelamin']);
+    $this->db->bind('tempat_lahir', $data['tempat_lahir']);
+    $this->db->bind('tanggal_lahir', $data['tgl_lahir']);
+    $this->db->bind('alamat_ktp', $data['alamat_ktp']);
+    $this->db->bind('alamat_dom', $data['alamat_dom']);
+    $this->db->bind('pendidikan', $data['pendidikan']);
+    $this->db->bind('pekerjaan', $data['pekerjaan']);
+    $this->db->bind('no_hp', $data['no_hp']);
+    $this->db->bind('upload_identitas', $identitas);
+    $this->db->bind('berkas_syarat', $syarat);
+    $this->db->execute();
+
+    return $this->db->rowCount();
   }
 }

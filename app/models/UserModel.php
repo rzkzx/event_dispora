@@ -73,6 +73,16 @@ class UserModel
     return $row;
   }
 
+  public function getPesertaLogged()
+  {
+    $this->db->query('SELECT * FROM user_peserta WHERE id_user = :id');
+    $this->db->bind(':id', $_SESSION['user_id']);
+
+    $row = $this->db->single();
+
+    return $row;
+  }
+
   public function add($data, $file)
   {
     $temp = $file['tmp_name'];
