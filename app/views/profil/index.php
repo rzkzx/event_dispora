@@ -75,64 +75,53 @@
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label ">Nama Lengkap</div>
-                  <div class="col-lg-9 col-md-8">Kevin Anderson</div>
+                  <div class="col-lg-9 col-md-8"><?= $data['user']->nama ?></div>
                 </div>
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">NIK</div>
-                  <div class="col-lg-9 col-md-8">621234567890</div>
+                  <div class="col-lg-9 col-md-8"><?= $data['user']->nik ?></div>
                 </div>
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Tanggal Lahir</div>
-                  <div class="col-lg-9 col-md-8">01-Januari-2023</div>
+                  <div class="col-lg-9 col-md-8"><?= dateID($data['user']->tanggal_lahir) ?></div>
                 </div>
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Tempat Lahir</div>
-                  <div class="col-lg-9 col-md-8">USA</div>
+                  <div class="col-lg-9 col-md-8"><?= $data['user']->tempat_lahir ?></div>
                 </div>
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Jenis Kelamin</div>
-                  <div class="col-lg-9 col-md-8">Laki-laki</div>
+                  <div class="col-lg-9 col-md-8"><?= $data['user']->jenis_kelamin ?></div>
                 </div>
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Alamat Domisili</div>
-                  <div class="col-lg-9 col-md-8">Banjarmasin</div>
+                  <div class="col-lg-9 col-md-8"><?= $data['user']->alamat_dom ?></div>
                 </div>
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Alamat KTP</div>
-                  <div class="col-lg-9 col-md-8">Los Santos</div>
+                  <div class="col-lg-9 col-md-8"><?= $data['user']->alamat_ktp ?></div>
                 </div>
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Pendidikan</div>
-                  <div class="col-lg-9 col-md-8">SMA</div>
+                  <div class="col-lg-9 col-md-8"><?= $data['user']->pendidikan ?></div>
                 </div>
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Pekerjaan</div>
-                  <div class="col-lg-9 col-md-8">Mahasiswa</div>
+                  <div class="col-lg-9 col-md-8"><?= $data['user']->pekerjaan ?></div>
                 </div>
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Nomor Handphone</div>
-                  <div class="col-lg-9 col-md-8">0812345xxx</div>
+                  <div class="col-lg-9 col-md-8"><?= $data['user']->no_hp ?></div>
                 </div>
-
-                <div class="row">
-                  <div class="col-lg-3 col-md-4 label">Email</div>
-                  <div class="col-lg-9 col-md-8">peserta@email.com</div>
-                </div>
-
-                <div class="row">
-                  <div class="col-lg-3 col-md-4 label">identitas</div>
-                  <div class="col-lg-9 col-md-8">dokumen.pdf</div>
-                </div>
-
               </div>
 
               <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
@@ -153,7 +142,7 @@
                   <div class="row mb-3">
                     <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Nama Lengkap</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="fullName" type="text" class="form-control" id="fullName" value="Kevin Anderson">
+                      <input name="fullName" type="text" class="form-control" id="fullName" value="<?= $data['user']->nama ?>">
                     </div>
                   </div>
 
@@ -161,21 +150,21 @@
                   <div class="row mb-3">
                     <label for="company" class="col-md-4 col-lg-3 col-form-label">NIK</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="nik" type="text" class="form-control" id="nik" value="621234567890">
+                      <input name="nik" type="text" class="form-control" id="nik" value="<?= $data['user']->nik ?>">
                     </div>
                   </div>
 
                   <div class="row mb-3">
                     <label for="Country" class="col-md-4 col-lg-3 col-form-label">Tempat Lahir</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="country" type="text" class="form-control" id="Country" value="USA">
+                      <input name="country" type="text" class="form-control" id="Country" value="<?= $data['user']->tempat_lahir ?>">
                     </div>
                   </div>
 
                   <div class="row mb-3">
                     <label for="Country" class="col-md-4 col-lg-3 col-form-label">Tanggal Lahir</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="ttl" type="date" class="form-control" id="ttl" value="">
+                      <input name="ttl" type="date" class="form-control" id="ttl" value="<?= $data['user']->tanggal_lahir ?>">
                     </div>
                   </div>
 
@@ -183,9 +172,8 @@
                     <label for="Country" class="col-md-4 col-lg-3 col-form-label">Jenis Kelamin</label>
                     <div class="col-md-8 col-lg-9">
                       <select class="form-select" aria-label="jenis-kelamin">
-                        <option selected>Jenis Kelamin</option>
-                        <option value="laki-laki">Laki-laki</option>
-                        <option value="perempuan">Perempuan</option>
+                        <option value="Laki-lLaki" <?php echo ($data['user']->jenis_kelamin == 'Laki-Laki') ? 'selected' : '' ?>>Laki-laki</option>
+                        <option value="Perempuan" <?php echo ($data['user']->jenis_kelamin == 'Perempuan') ? 'selected' : '' ?>>Perempuan</option>
                       </select>
                     </div>
                   </div>
@@ -194,52 +182,37 @@
                   <div class="row mb-3">
                     <label for="Address" class="col-md-4 col-lg-3 col-form-label">Alamat Domisili</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="address" type="text" class="form-control" id="Address" value="Banjarmasin">
+                      <input name="address" type="text" class="form-control" id="Address" value="<?= $data['user']->alamat_dom ?>">
                     </div>
                   </div>
 
                   <div class="row mb-3">
                     <label for="Address" class="col-md-4 col-lg-3 col-form-label">Alamat KTP</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="address" type="text" class="form-control" id="Address" value="Los Santos">
+                      <input name="address" type="text" class="form-control" id="Address" value="<?= $data['user']->alamat_ktp ?>">
                     </div>
                   </div>
 
                   <div class="row mb-3">
                     <label for="Job" class="col-md-4 col-lg-3 col-form-label">Pendidikan</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="job" type="text" class="form-control" id="Job" value="SMA">
+                      <input name="job" type="text" class="form-control" id="Job" value="<?= $data['user']->pendidikan ?>">
                     </div>
                   </div>
 
                   <div class="row mb-3">
                     <label for="Job" class="col-md-4 col-lg-3 col-form-label">Pekerjaan</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="job" type="text" class="form-control" id="Job" value="Web Designer">
+                      <input name="job" type="text" class="form-control" id="Job" value="<?= $data['user']->pekerjaan ?>">
                     </div>
                   </div>
 
                   <div class="row mb-3">
                     <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Nomor Telpon</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="phone" type="text" class="form-control" id="Phone" value="(436) 486-3538 x29071">
+                      <input name="phone" type="text" class="form-control" id="Phone" value="<?= $data['user']->no_hp ?>">
                     </div>
                   </div>
-
-                  <div class="row mb-3">
-                    <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
-                    <div class="col-md-8 col-lg-9">
-                      <input name="email" type="email" class="form-control" id="Email" value="peserta@email.com">
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label for="Twitter" class="col-md-4 col-lg-3 col-form-label">Identitas</label>
-                    <div class="col-md-8 col-lg-9">
-                      <input name="file" type="file" class="form-control" id="Twitter" value="identitas.pdf">
-                    </div>
-                  </div>
-
 
                   <div class="text-center">
                     <button type="submit" class="btn btn-primary">Simpan Perubahan</button>

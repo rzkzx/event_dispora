@@ -21,10 +21,11 @@ class Profil extends Controller
   // Profil User Controller
   public function index()
   {
+    $user = $this->userModel->getPesertaLogged();
+
     $data = [
       'title' => 'Profil Peserta',
-      'menu' => '',
-      'submenu' => '',
+      'user' => $user
     ];
 
     $this->view('profil/index', $data);
