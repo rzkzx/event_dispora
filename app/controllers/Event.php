@@ -4,6 +4,10 @@ class Event extends Controller
 
   public function __construct()
   {
+    if (Middleware::backAuth()) {
+      return redirect('admin');
+    }
+
     //new model instance
     $this->eventModel = $this->model('EventModel');
     $this->userModel = $this->model('UserModel');

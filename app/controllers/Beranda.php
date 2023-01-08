@@ -4,6 +4,10 @@ class Beranda extends Controller
 
   public function __construct()
   {
+    if (Middleware::backAuth()) {
+      return redirect('admin');
+    }
+
     //new model instance
     $this->eventModel = $this->model('EventModel');
     $this->saranModel = $this->model('SaranModel');

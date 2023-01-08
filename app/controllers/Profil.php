@@ -10,8 +10,8 @@ class Profil extends Controller
     }
 
     // check auth back access
-    if (!Middleware::frontAuth()) {
-      return redirect('admin/login');
+    if (Middleware::backAuth()) {
+      return redirect('admin');
     }
 
     //new model instance
