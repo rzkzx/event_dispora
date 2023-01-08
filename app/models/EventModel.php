@@ -232,4 +232,14 @@ class EventModel
 
     return $this->db->rowCount();
   }
+
+  // Get Data Peserta
+  public function getPesertaByEvent($id)
+  {
+    $this->db->query('SELECT * FROM ' . $this->daftarUmum . ' WHERE id_event=:id_event ORDER BY id DESC');
+    $this->db->bind('id_event', $id);
+    $result = $this->db->resultSet();
+
+    return $result;
+  }
 }

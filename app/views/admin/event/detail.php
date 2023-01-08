@@ -72,53 +72,50 @@
           <table class="table hover multiple-select-row data-table-export nowrap">
             <thead>
               <tr>
+                <th>No</th>
                 <th class="table-plus datatable-nosort">Nama Peserta</th>
                 <th>NIK</th>
-                <th>Email</th>
+                <th>Pendidikan</th>
                 <th>Tanggal Daftar</th>
                 <th class="datatable-nosort">Status</th>
                 <th class="datatable-nosort">Action</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td class="table-plus">Andrea J. Cagle</td>
-                <td>30</td>
-                <td>Gemini</td>
-                <td>1280 Prospect Valley Road Long Beach, CA 90802</td>
-                <td><span class="badge bg-warning">Menunggu</span></td>
-                <td>
-                  <div class="dropdown">
-                    <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                      <i class="dw dw-more"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                      <a class="dropdown-item" href="detail-peserta.html"><i class="dw dw-eye"></i> View</a>
-                      <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
+              <?php
+              $no = 1;
+              foreach ($data['peserta'] as $peserta) {
+                if ($peserta->status == 'diterima') {
+                  $badge = 'success';
+                } elseif ($peserta->status == 'ditolak') {
+                  $badge = 'danger';
+                } else {
+                  $badge = 'warning';
+                }
+              ?>
+                <tr>
+                  <td><?= $no; ?></td>
+                  <td class="table-plus"><?= $peserta->nama ?></td>
+                  <td><?= $peserta->nik ?></td>
+                  <td><?= $peserta->pendidikan ?></td>
+                  <td><?= $peserta->waktu_daftar ?></td>
+                  <td><span class="badge bg-<?= $badge ?> text-uppercase"><?= $peserta->status ?></span></td>
+                  <td>
+                    <div class="dropdown">
+                      <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                        <i class="dw dw-more"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                        <a class="dropdown-item" href="detail-peserta.html"><i class="dw dw-eye"></i> View</a>
+                        <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
+                      </div>
                     </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td class="table-plus">Andrea J. Cagle</td>
-                <td>20</td>
-                <td>Gemini</td>
-                <td>2829 Trainer Avenue Peoria, IL 61602</td>
-                <td>
-                  <span class="badge bg-success">Diterima</span>
-                </td>
-                <td>
-                  <div class="dropdown">
-                    <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                      <i class="dw dw-more"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                      <a class="dropdown-item" href="detail-peserta.html"><i class="dw dw-eye"></i> View</a>
-                      <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
-                    </div>
-                  </div>
-                </td>
-              </tr>
+                  </td>
+                </tr>
+              <?php
+                $no++;
+              }
+              ?>
             </tbody>
           </table>
         </div>

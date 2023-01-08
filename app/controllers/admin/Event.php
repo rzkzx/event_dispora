@@ -42,13 +42,15 @@ class Event extends Controller
   {
     // get data event with id
     $event = $this->eventModel->getById($id);
+    $peserta = $this->eventModel->getPesertaByEvent($id);
 
     if ($event) {
       $data = [
         'title' => 'Detail Event',
         'menu' => 'Event',
         'submenu' => 'Agenda Event',
-        'event' => $event
+        'event' => $event,
+        'peserta' => $peserta
       ];
 
       //replace new line on text mysql to <br> html

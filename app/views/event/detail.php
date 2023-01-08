@@ -56,11 +56,19 @@
                 <br>
                 <?php if (!$data['event']->aktif) { ?>
                   <h4><i>"Event telah berakhir"</i></h4>
-                <?php
+                  <?php
                 } else {
-                ?>
-                  <a href="<?= URLROOT ?>/event/pendaftaran/<?= $data['event']->id ?>" class="btn btn-outline-warning">Daftar Event</a>
+                  if (Middleware::isLoggedIn()) {
+                  ?>
+                    <a href="<?= URLROOT ?>/event/pendaftaran/<?= $data['event']->id ?>" class="btn btn-outline-warning">Daftar Event</a>
+                  <?php
+                  } else {
+                  ?>
+                    <div class="text-center">
+                      <h6>Untuk mendaftar anda harus login sebagai peserta terlebih dahulu</h6>
+                    </div>
                 <?php
+                  }
                 } ?>
 
               </div>
