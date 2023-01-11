@@ -85,6 +85,14 @@ class UserModel
 
   public function add($data, $file)
   {
+    $this->db->query('SELECT * FROM users WHERE username = :username');
+    $this->db->bind(':username', $data['username']);
+
+    $row = $this->db->single();
+    if ($row) {
+      return 400;
+    }
+
     $temp = $file['tmp_name'];
     $size = $file['size'];
 
@@ -92,10 +100,10 @@ class UserModel
       $file_extension = pathinfo($file['name'], PATHINFO_EXTENSION);
       $nama_file = rand(100, 100000) . '-' . $data['username'] . '.' . $file_extension;;
 
-      if ($size < 50000 * 1000) {
+      if ($size < 3000 * 1000) { //3mb
         move_uploaded_file($temp, "../public/assets/images/user/" . $nama_file);
       } else {
-        return 0;
+        return 401;
       }
     } else {
       $nama_file = NULL;
@@ -111,13 +119,24 @@ class UserModel
     $this->db->bind('password', password_hash($data['password'], PASSWORD_DEFAULT));
     $this->db->bind('jabatan', $data['jabatan']);
     $this->db->bind('foto', $nama_file);
-    $this->db->execute();
 
-    return $this->db->rowCount();
+    if ($this->db->execute()) {
+      return 200;
+    } else {
+      return 0;
+    }
   }
 
   public function addPeserta($data, $file)
   {
+    $this->db->query('SELECT * FROM users WHERE username = :username');
+    $this->db->bind(':username', $data['username']);
+
+    $row = $this->db->single();
+    if ($row) {
+      return 400;
+    }
+
     $temp = $file['tmp_name'];
     $size = $file['size'];
 
@@ -125,10 +144,10 @@ class UserModel
       $file_extension = pathinfo($file['name'], PATHINFO_EXTENSION);
       $nama_file = rand(100, 100000) . '-' . $data['username'] . '.' . $file_extension;;
 
-      if ($size < 50000 * 1000) {
+      if ($size < 3000 * 1000) { // 3mb
         move_uploaded_file($temp, "../public/assets/images/user/" . $nama_file);
       } else {
-        return 0;
+        return 401;
       }
     } else {
       $nama_file = NULL;
@@ -162,9 +181,12 @@ class UserModel
     $this->db->bind('pekerjaan', $data['pekerjaan']);
     $this->db->bind('no_hp', $data['no_hp']);
     $this->db->bind('foto', $nama_file);
-    $this->db->execute();
 
-    return $this->db->rowCount();
+    if ($this->db->execute()) {
+      return 200;
+    } else {
+      return 0;
+    }
   }
 
   public function changePassword($data)

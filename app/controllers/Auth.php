@@ -65,11 +65,28 @@ class Auth extends Controller
           setFlash('Password konfirmasi tidak sama', 'danger');
           return redirect('auth/register');
         } else {
-          if ($this->userModel->addPeserta($_POST, $_FILES['foto'])) {
-            setFlash('Berhasil daftar akun peserta silahkan login', 'success');
-            return redirect('auth/login');
-          } else {
-            die('something went wrong');
+          $registerStatusCode = $this->userModel->addPeserta($_POST, $_FILES['foto']);
+          switch ($registerStatusCode) {
+            case 400:
+              setFlash('Username telah terdaftar', 'danger');
+              return redirect('auth/register');
+              break;
+            case 401:
+              setFlash('Size foto harus dibawah 3mb', 'danger');
+              return redirect('auth/register');
+              break;
+            case 0:
+              setFlash('Gagal mengirim ke database', 'danger');
+              return redirect('auth/register');
+              break;
+            case 200:
+              setFlash('Pengguna terbaru berhasil ditambahkan.', 'success');
+              return redirect('auth/login');
+              break;
+            default:
+              setFlash('Pengguna terbaru berhasil ditambahkan.', 'success');
+              return redirect('auth/login');
+              break;
           }
         }
       }

@@ -90,11 +90,28 @@ class User extends Controller
           setFlash('Form input tidak boleh kosong', 'danger');
           return redirect('admin/user/addinstansi');
         } else {
-          if ($this->userModel->add($_POST, $_FILES['foto'])) {
-            setFlash('Pengguna terbaru berhasil ditambahkan.', 'success');
-            return redirect('admin/user/instansi');
-          } else {
-            die('something went wrong');
+          $registerStatusCode = $this->userModel->add($_POST, $_FILES['foto']);
+          switch ($registerStatusCode) {
+            case 400:
+              setFlash('Username telah terdaftar', 'danger');
+              return redirect('admin/user/addinstansi');
+              break;
+            case 401:
+              setFlash('Size foto harus dibawah 3mb', 'danger');
+              return redirect('admin/user/addinstansi');
+              break;
+            case 0:
+              setFlash('Gagal mengirim ke database', 'danger');
+              return redirect('admin/user/addinstansi');
+              break;
+            case 200:
+              setFlash('Pengguna terbaru berhasil ditambahkan.', 'success');
+              return redirect('admin/user/instansi');
+              break;
+            default:
+              setFlash('Pengguna terbaru berhasil ditambahkan.', 'success');
+              return redirect('admin/user/instansi');
+              break;
           }
         }
       } else {
