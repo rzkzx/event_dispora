@@ -59,7 +59,7 @@
                       </a>
                       <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
                         <a class="dropdown-item" href="tambah-user.html"><i class="dw dw-edit2"></i> Edit</a>
-                        <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
+                        <button type="button" class="dropdown-item" id="btnDelete" data-id="<?= $user->id ?>"><i class="dw dw-delete-3"></i> Delete</button>
                       </div>
                     </div>
                   </td>
@@ -75,3 +75,44 @@
       <!-- Simple Datatable End -->
 
       <?php require APPROOT . '/views/admin/inc/footer.php'; ?>
+
+      <script>
+        function alertConfirmation() {
+          $(document).delegate("#btnDelete", "click", function() {
+            Swal.fire({
+              icon: 'warning',
+              title: 'Anda yakin menghapus user ini?',
+              showDenyButton: false,
+              showCancelButton: true,
+              confirmButtonText: 'Hapus',
+              cancelButtonText: 'Batal'
+            }).then((result) => {
+              /* Read more about isConfirmed, isDenied below */
+              if (result.isConfirmed) {
+
+                var id = $(this).attr('data-id');
+
+                // Ajax config
+                $.ajax({
+                  type: "POST", //we are using GET method to get data from server side
+                  url: '<?= URLROOT ?>/admin/user/delete/' + id, // get the route value
+                  beforeSend: function() { //We add this before send to disable the button once we submit it so that we prevent the multiple click
+
+                  },
+                  success: function(response) { //once the request successfully process to the server side it will return result here
+                    // Reload lists of employees
+                    Swal.fire('Berhasil Hapus User.', response, 'success').then((result) => {
+                      if (result.isConfirmed) {
+                        location.reload();
+                      }
+                    });
+                  }
+                });
+
+              } else if (result.isDenied) {
+                Swal.fire('Perubahan tidak disimpan', '', 'info')
+              }
+            });
+          });
+        }
+      </script>

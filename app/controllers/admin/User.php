@@ -122,18 +122,22 @@ class User extends Controller
     }
   }
 
-  // Delete Event Controller
+  // Delete User Controller
   public function delete($id = '')
   {
-    //if event get posted by submit
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-      if ($this->eventModel->delete($id)) {
-        setFlash('Berhasil menghapus Event', 'success');
+    if (Middleware::isAdmin()) {
+      //if event get posted by submit
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if ($this->userModel->delete($id)) {
+          setFlash('Berhasil menghapus data user', 'success');
+        } else {
+          setFlash('Berhasil menghapus data user', 'danger');
+        }
       } else {
-        setFlash('Gagal menghapus Event', 'danger');
+        return redirect('admin/user/peserta');
       }
     } else {
-      return redirect('admin/event');
+      return redirect('admin');
     }
   }
 

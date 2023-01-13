@@ -225,4 +225,32 @@ class UserModel
       return 0;
     }
   }
+
+  public function delete($id)
+  {
+    $query = "SELECT * FROM users WHERE id=:id";
+    $this->db->query($query);
+    $this->db->bind('id', $id);
+    $user = $this->db->single();
+
+    if ($user->foto) {
+      if (unlink("../public/assets/images/user/" . $user->foto)) {
+        $query = "DELETE FROM users WHERE id=:id";
+        $this->db->query($query);
+        $this->db->bind('id', $id);
+        $this->db->execute();
+
+        return $this->db->rowCount();
+      } else {
+        return false;
+      }
+    } else {
+      $query = "DELETE FROM users WHERE id=:id";
+      $this->db->query($query);
+      $this->db->bind('id', $id);
+      $this->db->execute();
+
+      return $this->db->rowCount();
+    }
+  }
 }
