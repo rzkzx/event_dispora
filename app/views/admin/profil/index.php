@@ -62,7 +62,8 @@
                   <!-- Setting Tab start -->
                   <div class="tab-pane fade height-100-p show active" id="setting" role="tabpanel">
                     <div class="profile-setting">
-                      <form action="<?= URLROOT; ?>/pengguna/changeProfile" method="POST" enctype="multipart/form-data">
+                      <form action="<?= URLROOT; ?>/admin/user/changeProfile" method="POST" enctype="multipart/form-data">
+                        <?php flash() ?>
                         <ul class="profile-edit-list row">
                           <li class="weight-500 col-md-6">
                             <h4 class="text-blue h5 mb-20">

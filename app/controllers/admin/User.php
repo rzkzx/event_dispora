@@ -172,19 +172,19 @@ class User extends Controller
   public function changeProfile()
   {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-      if (empty($_POST['nama']) || empty($_POST['nip']) || empty($_POST['email']) || empty($_POST['no_hp']) || empty($_POST['jenis_kelamin'])) {
+      if (empty($_POST['nama']) || empty($_POST['jabatan'])) {
         setFlash('Form input tidak boleh kosong', 'danger');
-        return redirect('profile');
+        return redirect('admin/user');
       }
       if ($this->userModel->changeProfile($_POST, $_FILES)) {
         setFlash('Berhasil memperbarui data anda', 'success');
-        return redirect('profile');
+        return redirect('admin/user');
       } else {
         setFlash('Gagal memperbarui data anda', 'danger');
-        return redirect('profile');
+        return redirect('admin/user');
       }
     } else {
-      return redirect('profile');
+      return redirect('admin/user');
     }
   }
 }

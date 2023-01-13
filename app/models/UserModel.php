@@ -226,6 +226,55 @@ class UserModel
     }
   }
 
+  public function changeProfile($data, $files)
+  {
+    $newAvatarName = $_SESSION['foto'];
+    if ($files['avatar']['size'] > 0) {
+      $file_extension = pathinfo($files['avatar']['name'], PATHINFO_EXTENSION);
+      $allowed_extension = array(
+        "png",
+        "jpg",
+        "jpeg"
+      );
+
+      if (!in_array($file_extension, $allowed_extension)) {
+        return false;
+      }
+
+      $newAvatarName = rand(100, 100000) . '-' . $_SESSION['username'] . '.' . $file_extension;;
+
+      if ($files['avatar']['size'] < 2000 * 1000) {
+        if ($_SESSION['foto'] == NULL) {
+          move_uploaded_file($files['avatar']['tmp_name'], "../public/assets/images/user/" . $newAvatarName);
+        } else {
+          if (unlink("../public/assets/images/user/" . $_SESSION['foto'])) {
+            move_uploaded_file($files['avatar']['tmp_name'], "../public/assets/images/user/" . $newAvatarName);
+          }
+        }
+      } else {
+        return false;
+      }
+    }
+
+    $query = "UPDATE users SET nama=:nama,jabatan=:jabatan,foto=:foto WHERE username=:username";
+    $this->db->query($query);
+    $this->db->bind(':username', $_SESSION['username']);
+    $this->db->bind(':nama', $data['nama']);
+    $this->db->bind(':jabatan', $data['jabatan']);
+    $this->db->bind(':foto', $newAvatarName);
+
+    if ($this->db->execute()) {
+      $_SESSION['nama'] = $data['nama'];
+      $_SESSION['jabatan'] = $data['jabatan'];
+      $_SESSION['foto'] = $newAvatarName;
+
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+
   public function delete($id)
   {
     $query = "SELECT * FROM users WHERE id=:id";
