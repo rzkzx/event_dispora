@@ -51,7 +51,7 @@
               </div>
               <div class="widget-data">
                 <div class="h4 mb-0">350</div>
-                <div class="weight-600 font-14">Jumlah Sedang Berjalan</div>
+                <div class="weight-600 font-14">Event Sedang Berjalan</div>
               </div>
             </div>
           </div>
@@ -64,7 +64,7 @@
               </div>
               <div class="widget-data">
                 <div class="h4 mb-0">$6060</div>
-                <div class="weight-600 font-14">Jumlah Sudah Selesai </div>
+                <div class="weight-600 font-14">Event Sudah Selesai </div>
               </div>
             </div>
           </div>

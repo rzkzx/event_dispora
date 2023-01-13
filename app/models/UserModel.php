@@ -214,7 +214,7 @@ class UserModel
         $query = "UPDATE users SET password=:password WHERE username=:username";
         $this->db->query($query);
         $this->db->bind(':username', $_SESSION['username']);
-        $this->db->bind(':password', password_hash($data['password_baru'], PASSWORD_DEFAULT));
+        $this->db->bind(':password', password_hash($data['newPassword'], PASSWORD_DEFAULT));
 
         $this->db->execute();
         return $this->db->rowCount();

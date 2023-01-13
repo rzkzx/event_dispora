@@ -102,33 +102,33 @@
                   <!-- Change Password Tab start -->
                   <div class="tab-pane fade height-100-p" id="profile-change-password" role="tabpanel">
                     <div class="profile-change-password">
-                      <form action="<?= URLROOT; ?>/pengguna/changePassword" method="POST">
+                      <form method="post">
                         <ul class="profile-edit-list row">
                           <li class="weight-500 col-md-8 m-4">
                             <h4 class="text-blue h5 mb-20">Ganti password</h4>
                             <div class="row mb-3">
-                              <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Password saat ini</label>
-                              <div class="col-md-8 col-lg-9">
+                              <label for="currentPassword" class="col-md-4 col-lg-4 col-form-label">Password saat ini</label>
+                              <div class="col-md-8 col-lg-8">
                                 <input name="password" type="password" class="form-control" id="currentPassword" />
                               </div>
                             </div>
 
                             <div class="row mb-3">
-                              <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">Password baru</label>
-                              <div class="col-md-8 col-lg-9">
-                                <input name="newpassword" type="password" class="form-control" id="newPassword" />
+                              <label for="newPassword" class="col-md-5 col-lg-4 col-form-label">Password baru</label>
+                              <div class="col-md-8 col-lg-8">
+                                <input name="newPassword" type="password" class="form-control" id="newPassword" />
                               </div>
                             </div>
 
                             <div class="row mb-3">
-                              <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Masukkan kembali password baru</label>
-                              <div class="col-md-8 col-lg-9">
-                                <input name="renewpassword" type="password" class="form-control" id="renewPassword" />
+                              <label for="renewPassword" class="col-md-5 col-lg-4 col-form-label">Masukkan kembali password baru</label>
+                              <div class="col-md-8 col-lg-8">
+                                <input name="confirmNewPassword" type="password" class="form-control" id="renewPassword" />
                               </div>
                             </div>
 
                             <div class="">
-                              <button type="submit" class="btn btn-dark">
+                              <button type="submit" class="btn btn-dark" id="changePasswordSubmit">
                                 Ganti Password
                               </button>
                             </div>
@@ -175,4 +175,94 @@
             }
           }
         }
+
+        $(document).ready(function() {
+
+          // validate current password
+          let passwordError = false;
+          $("#currentPassword").keyup(function() {
+            let passwordValue = $("#currentPassword").val();
+            if (passwordValue.length == "") {
+              $("#currentPassword").addClass("is-invalid");
+              passwordError = false;
+            } else {
+              $("#currentPassword").removeClass("is-invalid");
+              passwordError = true;
+            }
+          });
+
+          // validate new password
+          let newPasswordError = false;
+          $("#newPassword").keyup(function() {
+            let newPasswordValue = $("#newPassword").val();
+            if (newPasswordValue.length < 6) {
+              $("#newPassword").addClass("is-invalid");
+              newPasswordError = false;
+            } else {
+              $("#newPassword").removeClass("is-invalid");
+              newPasswordError = true;
+            }
+          });
+
+          // validate new password
+          let confirmPasswordError = false;
+          $("#renewPassword").keyup(function() {
+            let newPasswordValue = $("#newPassword").val();
+            let confirmPasswordValue = $("#renewPassword").val();
+            if (newPasswordValue != confirmPasswordValue) {
+              $("#renewPassword").addClass("is-invalid");
+              confirmPasswordError = false;
+            } else {
+              $("#renewPassword").removeClass("is-invalid");
+              confirmPasswordError = true;
+            }
+          });
+
+          $("#changePasswordSubmit").click(function() {
+            event.preventDefault();
+            if (
+              passwordError == true && newPasswordError == true &&
+              confirmPasswordError == true
+            ) {
+              let password = $("#currentPassword");
+              let newPassword = $("#newPassword");
+              let confirmNewPassword = $("#renewPassword");
+              $.ajax({
+                type: 'POST',
+                url: '<?= URLROOT ?>/admin/user/changePassword',
+                data: {
+                  password: password.val(),
+                  newPassword: newPassword.val(),
+                  confirmNewPassword: confirmNewPassword.val()
+                },
+                dataType: "JSON",
+                success: function(data) {
+                  Swal.fire(data.message, '', data.status).then((result) => {
+                    if (result.isConfirmed) {
+                      password.val("");
+                      newPassword.val("");
+                      confirmNewPassword.val("");
+                    }
+                  });
+                }
+              })
+            } else {
+              if (!passwordError) {
+                $("#currentPassword").addClass("is-invalid");
+              }
+              if (!newPasswordError) {
+                $("#newPassword").addClass("is-invalid");
+              }
+              if (!confirmPasswordError) {
+                $("#renewPassword").addClass("is-invalid");
+              }
+              Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Form input masih tidak valid',
+              })
+            }
+          });
+
+        });
       </script>

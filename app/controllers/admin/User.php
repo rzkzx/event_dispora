@@ -142,71 +142,49 @@ class User extends Controller
   }
 
 
-  // Akhiri Event Button Controller
-  public function akhiri($id = '')
+  public function changePassword()
   {
-    //if event get posted by submit
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-      if ($this->eventModel->akhiri($id)) {
-        setFlash('Event telah berakhir', 'success');
+      if (empty($_POST['password']) || empty($_POST['newPassword']) || empty($_POST['confirmNewPassword'])) {
+        $data['message'] = 'Form input tidak valid';
+        $data['status'] = 'error';
+        echo json_encode($data);
+      }
+      if ($_POST['newPassword'] !== $_POST['confirmNewPassword']) {
+        $data['message'] = 'Konfirmasi password tidak sama';
+        $data['status'] = 'error';
+        echo json_encode($data);
+      }
+      if ($this->userModel->changePassword($_POST)) {
+        $data['message'] = 'Berhasil ganti password';
+        $data['status'] = 'success';
+        echo json_encode($data);
       } else {
-        setFlash('Gagal mengakhiri Event', 'danger');
+        $data['message'] = 'Gagal memperbarui password anda';
+        $data['status'] = 'error';
+        echo json_encode($data);
       }
     } else {
-      return redirect('admin/event');
+      return redirect('admin/user');
     }
   }
 
-
-  // Edit Event Controller
-  public function edit($id = '')
+  public function changeProfile()
   {
-    $data = [
-      'title' => 'Edit Event',
-      'menu' => 'Event',
-      'submenu' => 'Agenda Event',
-    ];
-
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-      $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-      //validate error free
-      if (empty($_POST['nama']) || empty($_POST['jenis']) || empty($_POST['jenjang']) || empty($_POST['deskripsi']) || empty($_POST['tanggal']) || empty($_POST['lokasi'])) {
-        //load view with error msg
+      if (empty($_POST['nama']) || empty($_POST['nip']) || empty($_POST['email']) || empty($_POST['no_hp']) || empty($_POST['jenis_kelamin'])) {
         setFlash('Form input tidak boleh kosong', 'danger');
-        return redirect('admin/event/edit' . $_POST['id']);
+        return redirect('profile');
+      }
+      if ($this->userModel->changeProfile($_POST, $_FILES)) {
+        setFlash('Berhasil memperbarui data anda', 'success');
+        return redirect('profile');
       } else {
-        //send data update to model
-        if ($this->eventModel->update($_POST, $_FILES['foto'])) {
-          setFlash('Data Event berhasil diperbarui.', 'success');
-          return redirect('admin/event');
-        } else {
-          die('something went wrong');
-        }
+        setFlash('Gagal memperbarui data anda', 'danger');
+        return redirect('profile');
       }
     } else {
-      $event = $this->eventModel->getById($id);
-
-      // check event available
-      if ($event) {
-        // check event has ended
-        if (!$event->aktif) {
-          return redirect('admin/event');
-        }
-
-        $data['id'] = $id;
-        $data['event'] = $event;
-
-        // check if evnt doesn't have cover
-        if ($data['event']->cover) {
-          $data['event']->cover = $data['event']->cover;
-        } else {
-          $data['event']->cover = 'noimage.jpg';
-        }
-
-        $this->view('admin/event/edit', $data);
-      } else {
-        return redirect('admin/event');
-      }
+      return redirect('profile');
     }
   }
 }
