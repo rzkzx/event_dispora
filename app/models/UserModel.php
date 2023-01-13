@@ -24,6 +24,19 @@ class UserModel
     }
   }
 
+  public function checkUsername($username)
+  {
+    $this->db->query('SELECT * FROM users WHERE username = :username');
+    $this->db->bind(':username', $username);
+
+    $row = $this->db->single();
+    if ($row) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   public function getAll()
   {
     $this->db->query('SELECT * FROM users ORDER BY id DESC');

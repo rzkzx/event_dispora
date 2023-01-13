@@ -83,6 +83,7 @@
 <script src="<?= URLROOT; ?>/front/vendor/php-email-form/validate.js"></script>
 <!-- Template Main JS File -->
 <script src="<?= URLROOT; ?>/front/js/main.js"></script>
+<script src="<?= URLROOT; ?>/front/js/jQuery.js"></script>
 
 </body>
 

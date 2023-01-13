@@ -122,4 +122,18 @@ class Auth extends Controller
     session_destroy();
     return redirect('auth/login');
   }
+
+  public function checkUsername()
+  {
+    //if event get posted by submit
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+      if ($this->userModel->checkUsername($_POST['username'])) {
+        echo 0;
+      } else {
+        echo 1;
+      }
+    } else {
+      return redirect('auth/register');
+    }
+  }
 }

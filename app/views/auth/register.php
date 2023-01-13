@@ -25,24 +25,24 @@
                 </div>
 
                 <div class="col-12">
-                  <label for="yourEmail" class="form-label">Username</label>
-                  <input type="text" name="username" class="form-control" id="yourEmail" required />
-                  <div class="invalid-feedback">
+                  <label for="username" class="form-label">Username</label>
+                  <input type="text" name="username" class="form-control" id="username" required />
+                  <div id="usernameInvalid">
                     Mohon isi alamat email anda!
                   </div>
                 </div>
 
                 <div class="col-12">
-                  <label for="yourPassword" class="form-label">Password</label>
-                  <input type="password" name="password" class="form-control" id="yourPassword" required />
-                  <div class="invalid-feedback">
+                  <label for="password" class="form-label">Password</label>
+                  <input type="password" name="password" class="form-control" id="password" required />
+                  <div class="invalid-feedback" id="passInvalid">
                     Mohon isi password anda!
                   </div>
                 </div>
                 <div class="col-12">
-                  <label for="yourPassword" class="form-label">Masukkan kembali password</label>
-                  <input type="password" name="passwordConf" class="form-control" id="yourPassword" required />
-                  <div class="invalid-feedback">
+                  <label for="confPassword" class="form-label">Masukkan kembali password</label>
+                  <input type="password" name="passwordConf" class="form-control" id="confPassword" required />
+                  <div class="invalid-feedback" id="confPassInvalid">
                     Mohon isi kembali password anda!
                   </div>
                 </div>
@@ -131,7 +131,7 @@
                   </div>
                 </div>
                 <div class="col-12">
-                  <button class="btn btn-outline-dark w-100" type="submit">
+                  <button class="btn btn-outline-dark w-100" type="submit" id="submitbtn">
                     Buat Akun
                   </button>
                 </div>
@@ -182,4 +182,109 @@
       }
     }
   }
+
+  $(document).ready(function() {
+
+    // Validate Password
+    $("#passInvalid").hide();
+    let passwordError = true;
+    $("#password").keyup(function() {
+      validatePassword();
+    });
+
+    function validatePassword() {
+      let passwordValue = $("#password").val();
+      if (passwordValue.length == "") {
+        $("#passInvalid").show();
+        passwordError = false;
+        return false;
+      }
+      if (passwordValue.length < 6) {
+        $("#passInvalid").show();
+        $("#passInvalid").html(
+          "Password minimal 6 karakter atau lebih"
+        );
+        $("#password").addClass("is-invalid");
+        passwordError = false;
+        return false;
+      } else {
+        $("#password").removeClass("is-invalid");
+        $("#passInvalid").hide();
+      }
+    }
+
+    // Validate Confirm Password
+    $("#confPassInvalid").hide();
+    let confirmPasswordError = true;
+    $("#confPassword").keyup(function() {
+      validateConfirmPassword();
+    });
+
+    function validateConfirmPassword() {
+      let confirmPasswordValue = $("#confPassword").val();
+      let passwordValue = $("#password").val();
+      if (passwordValue != confirmPasswordValue) {
+        $("#confPassInvalid").show();
+        $("#confPassInvalid").html("Konfirmasi password tidak sama");
+        $("#confPassword").addClass("is-invalid");
+        confirmPasswordError = false;
+        return false;
+      } else {
+        $("#confPassword").removeClass("is-invalid");
+        $("#confPassInvalid").hide();
+      }
+    }
+
+    $("#usernameInvalid").hide();
+    $("#username").keyup(function() {
+      var usernameInput = $("#username").val();
+      var usernameRegex = /^[a-zA-Z0-9]+$/;
+      if (usernameRegex.test(usernameInput) && usernameInput != '') {
+        $.ajax({
+          type: 'POST',
+          url: '<?= URLROOT ?>/auth/checkUsername',
+          data: {
+            username: usernameInput
+          },
+          success: function(response) {
+            if (response == 1) {
+              $("#usernameInvalid").show();
+              $("#usernameInvalid").html("Username tersedia");
+              $("#username").addClass("is-valid");
+              $("#username").removeClass("is-invalid");
+              $("#usernameInvalid").addClass("valid-feedback");
+              $("#usernameInvalid").removeClass("invalid-feedback");
+            } else {
+              $("#usernameInvalid").show();
+              $("#usernameInvalid").html("Username tidak tersedia");
+              $("#username").addClass("is-invalid");
+              $("#username").removeClass("is-valid");
+              $("#usernameInvalid").addClass("invalid-feedback");
+              $("#usernameInvalid").removeClass("valid-feedback");
+            }
+          }
+        });
+      } else {
+        $("#usernameInvalid").show();
+        $("#usernameInvalid").html("Input username yang valid");
+        $("#username").addClass("is-invalid");
+        $("#username").removeClass("is-valid");
+        $("#usernameInvalid").addClass("invalid-feedback");
+        $("#usernameInvalid").removeClass("valid-feedback");
+      }
+    });
+
+    $("#submitbtn").click(function() {
+      validatePassword();
+      validateConfirmPassword();
+      if (
+        passwordError == true &&
+        confirmPasswordError == true
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+  });
 </script>
