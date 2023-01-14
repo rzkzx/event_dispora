@@ -25,6 +25,38 @@ class EventModel
     return $result;
   }
 
+  public function getUmum($limit = '')
+  {
+    $jenjang = 'Umum';
+    if ($limit > 0) {
+      $this->db->query('SELECT * FROM ' . $this->table . ' WHERE jenjang=:jenjang ORDER BY id DESC LIMIT ' . $limit);
+      $this->db->bind('jenjang', $jenjang);
+    } else {
+      $this->db->query('SELECT * FROM ' . $this->table . ' WHERE jenjang=:jenjang ORDER BY id DESC');
+      $this->db->bind('jenjang', $jenjang);
+    }
+
+    $result = $this->db->resultSet();
+
+    return $result;
+  }
+
+  public function getKhusus($limit = '')
+  {
+    $jenjang = 'Khusus';
+    if ($limit > 0) {
+      $this->db->query('SELECT * FROM ' . $this->table . ' WHERE jenjang=:jenjang ORDER BY id DESC LIMIT ' . $limit);
+      $this->db->bind('jenjang', $jenjang);
+    } else {
+      $this->db->query('SELECT * FROM ' . $this->table . ' WHERE jenjang=:jenjang ORDER BY id DESC');
+      $this->db->bind('jenjang', $jenjang);
+    }
+
+    $result = $this->db->resultSet();
+
+    return $result;
+  }
+
   public function getByAktif($limit = '')
   {
     if ($limit > 0) {

@@ -18,7 +18,7 @@
       <div class="container">
         <ol>
           <li><a href="<?= URLROOT ?>/beranda">Home</a></li>
-          <li><a href="<?= URLROOT ?>/event">Event</a></li>
+          <li><a href="<?= URLROOT ?>/event<?php echo ($data['event']->jenjang == 'Khusus') ? '/khusus' : ''; ?>">Event <?= $data['event']->jenjang ?></a></li>
           <li><?= $data['title'] ?></li>
         </ol>
       </div>
@@ -37,10 +37,11 @@
             </div><!-- End post img -->
 
             <div class="col-sm-6 col-md-8 judul">
+              <a href="<?= URLROOT ?>/auth" class="btn btn-warning px-4">Daftar Event</a>
               <h2 class="title"><?= $data['event']->nama ?></h2>
-              <div class="meta-top  ">
+              <div class="meta-top d-flex" style="justify-content: space-between;font-weight:bold;">
                 <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-circle-fill"></i> <a href="blog-details.html"><?= $data['event']->jenis ?></a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-circle-fill"></i> <a href="#"><?= $data['event']->jenis ?></a></li>
                 </ul>
                 <ul>
                   <li class="d-flex align-items-center"><i class="bi bi-geo-alt"></i> <a href="#"><?= $data['event']->lokasi ?></a></li>
@@ -65,9 +66,6 @@
                   <?php
                   } else {
                   ?>
-                    <div class="text-center">
-                      <h6>Untuk mendaftar anda harus login sebagai peserta terlebih dahulu</h6>
-                    </div>
                 <?php
                   }
                 } ?>

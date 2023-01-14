@@ -15,8 +15,8 @@ class Event extends Controller
 
   public function index()
   {
-    $limit = 3;
-    $total = count($event = $this->eventModel->get());
+    $limit = 6;
+    $total = count($event = $this->eventModel->getUmum());
     $totalPage = ceil($total / $limit);
 
     if (isset($_GET['page']) && $_GET['page'] > 1) {
@@ -25,10 +25,10 @@ class Event extends Controller
       if ($page > $totalPage) {
         return redirect('event');
       } else {
-        $event = $this->eventModel->get($firstPage . ', ' . $limit);
+        $event = $this->eventModel->getUmum($firstPage . ', ' . $limit);
       }
     } else {
-      $event = $this->eventModel->get($limit);
+      $event = $this->eventModel->getUmum($limit);
     }
 
     $data = [
@@ -42,20 +42,20 @@ class Event extends Controller
 
   public function khusus()
   {
-    $limit = 3;
-    $total = count($event = $this->eventModel->get());
+    $limit = 6;
+    $total = count($event = $this->eventModel->getKhusus());
     $totalPage = ceil($total / $limit);
 
     if (isset($_GET['page']) && $_GET['page'] > 1) {
       $page = $_GET['page'];
       $firstPage = ($page > 1) ? ($page * $limit) - $limit : 0;
       if ($page > $totalPage) {
-        return redirect('event');
+        return redirect('event/khusus');
       } else {
-        $event = $this->eventModel->get($firstPage . ', ' . $limit);
+        $event = $this->eventModel->getKhusus($firstPage . ', ' . $limit);
       }
     } else {
-      $event = $this->eventModel->get($limit);
+      $event = $this->eventModel->getKhusus($limit);
     }
 
     $data = [
