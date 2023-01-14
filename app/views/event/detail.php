@@ -37,7 +37,29 @@
             </div><!-- End post img -->
 
             <div class="col-sm-6 col-md-8 judul">
-              <a href="<?= URLROOT ?>/auth" class="btn btn-warning px-4">Daftar Event</a>
+              <?php
+              if (!$data['event']->aktif) {
+              ?>
+                <a href="#" class="btn btn-danger px-4">Event telah berakhir</a>
+                <?php
+              } else {
+                if (Middleware::isLoggedIn()) {
+                  if ($data['event']->jenjang == 'Umum') {
+                    if ($_SESSION['level'] == 'peserta') {
+                      echo '<a href="<?= URLROOT ?>/event/pendaftaran/' . $data['event']->id . '" class="btn btn-warning px-4">Daftar Event</a>';
+                    }
+                  } else {
+                    if ($_SESSION['level'] == 'panitia') {
+                      echo '<a href="<?= URLROOT ?>/event/pendaftaran/' . $data['event']->id . '" class="btn btn-warning px-4">Daftar Event</a>';
+                    }
+                  }
+                } else {
+                ?>
+                  <a href="<?= URLROOT ?>/auth" class="btn btn-warning px-4">Daftar Event</a>
+              <?php
+                }
+              }
+              ?>
               <h2 class="title"><?= $data['event']->nama ?></h2>
               <div class="meta-top d-flex" style="justify-content: space-between;font-weight:bold;">
                 <ul>
@@ -53,23 +75,6 @@
 
               <div class="content">
                 <p style="text-align:justify;"><?= $data['event']->deskripsi ?></p>
-              </div>
-              <div class="d-grid gap-2">
-                <br>
-                <?php if (!$data['event']->aktif) { ?>
-                  <h4><i>"Event telah berakhir"</i></h4>
-                  <?php
-                } else {
-                  if (Middleware::isLoggedIn()) {
-                  ?>
-                    <a href="<?= URLROOT ?>/event/pendaftaran/<?= $data['event']->id ?>" class="btn btn-outline-warning">Daftar Event</a>
-                  <?php
-                  } else {
-                  ?>
-                <?php
-                  }
-                } ?>
-
               </div>
 
               <!-- End post content -->
