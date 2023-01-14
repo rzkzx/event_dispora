@@ -54,7 +54,7 @@
   <header id="header" class="header d-flex align-items-center">
 
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a href="<?= URLROOT ?>/beranda" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <img src="<?= URLROOT; ?>/front/img/logo/dispora-kalsel.png" alt="logo">
       </a>
@@ -81,41 +81,47 @@
         <li><a href="<?= URLROOT; ?>/beranda#contact">Kontak</a></li>
         <?php
         if (Middleware::isLoggedIn()) {
+          if (Middleware::frontAuth()) {
         ?>
-          <li class="dropdown pe-3">
-            <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-              <span class="d-none d-md-block dropdown-toggle ps-2"><?= $_SESSION['nama'] ?></span>
-            </a><!-- End Profile Iamge Icon -->
-            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-              <li>
-                <a class="dropdown-item d-flex align-items-center" href="<?= URLROOT; ?>/profil">
-                  <i class="bi bi-person"></i>
-                  <span>Profil</span>
-                </a>
-              </li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <i class="bi bi-clock-history"></i>
-                  <span>Riwayat Event</span>
-                </a>
-              </li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li>
-                <a class="dropdown-item d-flex align-items-center" href="<?= URLROOT; ?>/auth/logout">
-                  <i class="bi bi-box-arrow-right"></i>
-                  <span>Sign Out</span>
-                </a>
-              </li>
-            </ul><!-- End Profile Dropdown Items -->
-          </li><!-- End Profile Nav -->
-        <?php
+            <li class="dropdown pe-3">
+              <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                <span class="d-none d-md-block dropdown-toggle ps-2"><?= $_SESSION['nama'] ?></span>
+              </a><!-- End Profile Iamge Icon -->
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                <li>
+                  <a class="dropdown-item d-flex align-items-center" href="<?= URLROOT; ?>/profil">
+                    <i class="bi bi-person"></i>
+                    <span>Profil</span>
+                  </a>
+                </li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li>
+                  <a class="dropdown-item d-flex align-items-center" href="#">
+                    <i class="bi bi-clock-history"></i>
+                    <span>Riwayat Event</span>
+                  </a>
+                </li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li>
+                  <a class="dropdown-item d-flex align-items-center" href="<?= URLROOT; ?>/auth/logout">
+                    <i class="bi bi-box-arrow-right"></i>
+                    <span>Sign Out</span>
+                  </a>
+                </li>
+              </ul><!-- End Profile Dropdown Items -->
+            </li><!-- End Profile Nav -->
+          <?php
+          } else {
+          ?>
+            <li><a href="<?= URLROOT; ?>/admin">Dashboard</a></li>
+          <?php
+          }
         } else {
-        ?>
+          ?>
           <li><a href="<?= URLROOT; ?>/auth">Login</a></li>
         <?php
         }

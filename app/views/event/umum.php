@@ -59,9 +59,66 @@
       <nav>
         <div class="services-pagination">
           <ul class="justify-content-center">
-            <li class="active"><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
+            <?php
+            $totalPage = $data['totalPage'];
+            $page = 1;
+            if (isset($_GET['page'])) {
+              $page = $_GET['page'];
+            }
+            $adjacents = "1";
+
+            if ($totalPage <= 3) {
+              for ($i = 1; $i <= $totalPage; $i++) {
+                if ($i == $page) {
+                  echo "<li class='active'><a>$i</a></li>";
+                } else {
+                  echo "<li><a href='?page=$i'>$i</a></li>";
+                }
+              }
+            } else if ($totalPage > 5) {
+              if ($page <= 2) {
+                for ($i = 1; $i < 4; $i++) {
+                  if ($i == $page) {
+                    echo "<li class='active'><a>$i</a></li>";
+                  } else {
+                    echo "<li><a href='?page=$i'>$i</a></li>";
+                  }
+                }
+                echo "<li><a>...</a></li>";
+                echo "<li><a href='?page=$totalPage'>$totalPage</a></li>";
+              } elseif ($page > 2 && $page < $totalPage - 2) {
+                echo "<li><a href='?page=1'>First</a></li>";
+                echo "<li><a>...</a></li>";
+                for (
+                  $i = $page - $adjacents;
+                  $i <= $page + $adjacents;
+                  $i++
+                ) {
+                  if ($i == $page) {
+                    echo "<li class='active'><a>$i</a></li>";
+                  } else {
+                    echo "<li><a href='?page=$i'>$i</a></li>";
+                  }
+                }
+                echo "<li><a>...</a></li>";
+                echo "<li><a href='?page=$totalPage'>$totalPage</a></li>";
+              } else {
+                echo "<li><a href='?page=1'>First</a></li>";
+                echo "<li><a>...</a></li>";
+                for (
+                  $i = $totalPage - 3;
+                  $i <= $totalPage;
+                  $i++
+                ) {
+                  if ($i == $page) {
+                    echo "<li class='active'><a>$i</a></li>";
+                  } else {
+                    echo "<li><a href='?page=$i'>$i</a></li>";
+                  }
+                }
+              }
+            }
+            ?>
           </ul>
         </div>
       </nav>

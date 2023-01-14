@@ -132,14 +132,14 @@
               <h3><br> <?= $event->nama ?></h3>
               <div class="meta-top">
                 <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-geo-alt"></i> <a href="#"><?= $event->lokasi ?></a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-geo-alt"></i> <a href="<?= URLROOT; ?>/event/detail/<?= $event->id ?>"><?= $event->lokasi ?></a></li>
                 </ul>
                 <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-calendar-event"></i> <a href="#"><time datetime="2020-01-01"><?= dateID($event->tanggal) ?></time></a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-calendar-event"></i> <a href="<?= URLROOT; ?>/event/detail/<?= $event->id ?>"><time datetime="2020-01-01"><?= dateID($event->tanggal) ?></time></a></li>
                 </ul>
               </div><!-- End meta top -->
               <p><?php echo (strlen($event->deskripsi) > 90) ? substr($event->deskripsi, 0, 90) . "..." : $event->deskripsi; ?></p>
-              <a href="event-details.html" class="readmore stretched-link" title="Detail">Baca Selengkapnya <i class="bi bi-arrow-right"></i></a>
+              <a href="<?= URLROOT; ?>/event/detail/<?= $event->id ?>" class="readmore stretched-link" title="Detail">Baca Selengkapnya <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
         <?php

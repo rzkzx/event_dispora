@@ -4,9 +4,9 @@ class Event extends Controller
 
   public function __construct()
   {
-    if (Middleware::backAuth()) {
-      return redirect('admin');
-    }
+    // if (Middleware::backAuth()) {
+    //   return redirect('admin');
+    // }
 
     //new model instance
     $this->eventModel = $this->model('EventModel');
@@ -15,11 +15,26 @@ class Event extends Controller
 
   public function index()
   {
-    $event = $this->eventModel->get();
+    $limit = 3;
+    $total = count($event = $this->eventModel->get());
+    $totalPage = ceil($total / $limit);
+
+    if (isset($_GET['page']) && $_GET['page'] > 1) {
+      $page = $_GET['page'];
+      $firstPage = ($page > 1) ? ($page * $limit) - $limit : 0;
+      if ($page > $totalPage) {
+        return redirect('event');
+      } else {
+        $event = $this->eventModel->get($firstPage . ', ' . $limit);
+      }
+    } else {
+      $event = $this->eventModel->get($limit);
+    }
 
     $data = [
       'title' => 'Event Umum',
-      'event' => $event
+      'event' => $event,
+      'totalPage' => $totalPage
     ];
 
     $this->view('event/umum', $data);
@@ -27,11 +42,26 @@ class Event extends Controller
 
   public function khusus()
   {
-    $event = $this->eventModel->get();
+    $limit = 3;
+    $total = count($event = $this->eventModel->get());
+    $totalPage = ceil($total / $limit);
+
+    if (isset($_GET['page']) && $_GET['page'] > 1) {
+      $page = $_GET['page'];
+      $firstPage = ($page > 1) ? ($page * $limit) - $limit : 0;
+      if ($page > $totalPage) {
+        return redirect('event');
+      } else {
+        $event = $this->eventModel->get($firstPage . ', ' . $limit);
+      }
+    } else {
+      $event = $this->eventModel->get($limit);
+    }
 
     $data = [
       'title' => 'Event Khusus',
-      'event' => $event
+      'event' => $event,
+      'totalPage' => $totalPage
     ];
 
     $this->view('event/khusus', $data);
@@ -67,51 +97,55 @@ class Event extends Controller
   public function pendaftaran($id = '')
   {
     if (Middleware::isLoggedIn()) {
-      $data = [
-        'title' => 'Form Pendaftaran',
-        'menu' => 'Event',
-        'submenu' => 'Agenda Event',
-      ];
+      if (Middleware::frontAuth()) {
+        $data = [
+          'title' => 'Form Pendaftaran',
+          'menu' => 'Event',
+          'submenu' => 'Agenda Event',
+        ];
 
-      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-        //validate error free
-        if (empty($_POST['nama']) || empty($_POST['nik']) || empty($_POST['jenis_kelamin']) || empty($_POST['tempat_lahir']) || empty($_POST['tgl_lahir']) || empty($_POST['alamat_dom']) || empty($_POST['alamat_ktp']) || empty($_POST['pendidikan']) || empty($_POST['pekerjaan']) || empty($_POST['no_hp'])) {
-          //load view with error msg
-          setFlash('Form input tidak boleh kosong', 'danger');
-          return redirect('event/pendaftaran/' . $_POST['event_id']);
-        } else {
-          // get peserta data
-          $peserta = $this->userModel->getPesertaLogged();
-          $id_peserta = $peserta->id;
-
-          //send data insert to model
-          if ($this->eventModel->daftarUmum($id_peserta, $_POST, $_FILES)) {
-            setFlash('Berhasil mendaftarkan diri', 'success');
-            return redirect('profil');
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+          $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+          //validate error free
+          if (empty($_POST['nama']) || empty($_POST['nik']) || empty($_POST['jenis_kelamin']) || empty($_POST['tempat_lahir']) || empty($_POST['tgl_lahir']) || empty($_POST['alamat_dom']) || empty($_POST['alamat_ktp']) || empty($_POST['pendidikan']) || empty($_POST['pekerjaan']) || empty($_POST['no_hp'])) {
+            //load view with error msg
+            setFlash('Form input tidak boleh kosong', 'danger');
+            return redirect('event/pendaftaran/' . $_POST['event_id']);
           } else {
-            die('something went wrong');
+            // get peserta data
+            $peserta = $this->userModel->getPesertaLogged();
+            $id_peserta = $peserta->id;
+
+            //send data insert to model
+            if ($this->eventModel->daftarUmum($id_peserta, $_POST, $_FILES)) {
+              setFlash('Berhasil mendaftarkan diri', 'success');
+              return redirect('profil');
+            } else {
+              die('something went wrong');
+            }
+          }
+        } else {
+          $event = $this->eventModel->getById($id);
+          $user = $this->userModel->getPesertaLogged();
+
+          // check event available
+          if ($event) {
+            // check event has ended
+            if (!$event->aktif) {
+              return redirect('event/detail/' . $id);
+            }
+
+            $data['id'] = $id;
+            $data['event'] = $event;
+            $data['user'] = $user;
+
+            $this->view('event/daftar_umum', $data);
+          } else {
+            return redirect('event');
           }
         }
       } else {
-        $event = $this->eventModel->getById($id);
-        $user = $this->userModel->getPesertaLogged();
-
-        // check event available
-        if ($event) {
-          // check event has ended
-          if (!$event->aktif) {
-            return redirect('event/detail/' . $id);
-          }
-
-          $data['id'] = $id;
-          $data['event'] = $event;
-          $data['user'] = $user;
-
-          $this->view('event/daftar_umum', $data);
-        } else {
-          return redirect('event');
-        }
+        return redirect('event/detail/' . $id);
       }
     } else {
       return redirect('auth');

@@ -18,6 +18,7 @@
       <div class="container">
         <ol>
           <li><a href="<?= URLROOT ?>/beranda">Home</a></li>
+          <li><a href="<?= URLROOT ?>/event">Event</a></li>
           <li><?= $data['title'] ?></li>
         </ol>
       </div>
