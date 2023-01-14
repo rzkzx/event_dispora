@@ -43,7 +43,6 @@
           </div>
           <div class="credits">
           </div>
-
         </div>
       </div>
 
@@ -55,3 +54,15 @@
 </main><!-- End #main -->
 
 <?php require APPROOT . '/views/layouts/footer.php'; ?>
+
+<script>
+  $(document).ready(function() {
+    $("#sip").click(function() {
+      tata.error('Gagal Login', 'Username atau Password salah', {
+        position: 'mm',
+        duration: 3000,
+        animate: 'slide'
+      })
+    });
+  });
+</script>

@@ -23,6 +23,7 @@
   <link href="<?= URLROOT; ?>/front/vendor/aos/aos.css" rel="stylesheet">
   <link href="<?= URLROOT; ?>/front/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="<?= URLROOT; ?>/front/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="<?= URLROOT; ?>/front/vendor/tata/tata.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
   <link href="<?= URLROOT; ?>/front/css/main.css" rel="stylesheet">
