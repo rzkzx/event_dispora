@@ -130,6 +130,12 @@ class Event extends Controller
 
           // check event available
           if ($event) {
+            if ($event->jenjang == 'Umum' && $_SESSION['level'] != 'peserta') {
+              return redirect('event/detail/' . $id);
+            }
+            if ($event->jenjang == 'Khusus' && $_SESSION['level'] != 'pegawai') {
+              return redirect('event/detail/' . $id);
+            }
             // check event has ended
             if (!$event->aktif) {
               return redirect('event/detail/' . $id);
