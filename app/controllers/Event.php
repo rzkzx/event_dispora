@@ -106,23 +106,54 @@ class Event extends Controller
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-          //validate error free
-          if (empty($_POST['nama']) || empty($_POST['nik']) || empty($_POST['jenis_kelamin']) || empty($_POST['tempat_lahir']) || empty($_POST['tgl_lahir']) || empty($_POST['alamat_dom']) || empty($_POST['alamat_ktp']) || empty($_POST['pendidikan']) || empty($_POST['pekerjaan']) || empty($_POST['no_hp'])) {
-            //load view with error msg
-            setFlash('Form input tidak boleh kosong', 'danger');
-            return redirect('event/pendaftaran/' . $_POST['event_id']);
-          } else {
-            // get peserta data
-            $peserta = $this->userModel->getPesertaLogged();
-            $id_peserta = $peserta->id;
-
-            //send data insert to model
-            if ($this->eventModel->daftarUmum($id_peserta, $_POST, $_FILES)) {
-              setFlash('Berhasil mendaftarkan diri', 'success');
-              return redirect('profil');
-            } else {
-              die('something went wrong');
+          $event = $this->eventModel->getById($_POST['event_id']);
+          if ($event) {
+            if ($event->jenjang == 'Umum' && $_SESSION['level'] != 'peserta') {
+              return redirect('event/detail/' . $id);
             }
+            if ($event->jenjang == 'Khusus' && $_SESSION['level'] != 'pegawai') {
+              return redirect('event/detail/' . $id);
+            }
+            // check event has ended
+            if (!$event->aktif) {
+              return redirect('event/detail/' . $id);
+            }
+
+            if ($event->jenjang == 'Umum') { //validate error free
+              if (empty($_POST['nama']) || empty($_POST['nik']) || empty($_POST['jenis_kelamin']) || empty($_POST['tempat_lahir']) || empty($_POST['tgl_lahir']) || empty($_POST['alamat_dom']) || empty($_POST['alamat_ktp']) || empty($_POST['pendidikan']) || empty($_POST['pekerjaan']) || empty($_POST['no_hp'])) {
+                //load view with error msg
+                setFlash('Form input tidak boleh kosong', 'danger');
+                return redirect('event/pendaftaran/' . $_POST['event_id']);
+              } else {
+                // get peserta data
+                $peserta = $this->userModel->getPesertaLogged();
+                $id_peserta = $peserta->id;
+
+                //send data insert to model
+                if ($this->eventModel->daftarUmum($id_peserta, $_POST, $_FILES)) {
+                  setFlash('Berhasil mendaftarkan diri', 'success');
+                  return redirect('profil');
+                } else {
+                  die('something went wrong');
+                }
+              }
+            } else {
+              if (empty($_POST['nama']) || empty($_POST['nik']) || empty($_POST['asal_daerah']) || empty($_POST['jenis_kelamin']) || empty($_POST['tempat_lahir']) || empty($_POST['tanggal_lahir']) || empty($_POST['alamat_dom']) || empty($_POST['alamat_ktp']) || empty($_POST['pendidikan'])) {
+                //load view with error msg
+                setFlash('Form input tidak boleh kosong', 'danger');
+                return redirect('event/pendaftaran/' . $_POST['event_id']);
+              } else {
+                //send data insert to model
+                if ($this->eventModel->daftarDelegasi($_POST, $_FILES)) {
+                  setFlash('Berhasil mendaftarkan peserta', 'success');
+                  return redirect('event/pendaftaran/' . $_POST['event_id']);
+                } else {
+                  die('something went wrong');
+                }
+              }
+            }
+          } else {
+            return redirect('event');
           }
         } else {
           $event = $this->eventModel->getById($id);
@@ -145,7 +176,11 @@ class Event extends Controller
             $data['event'] = $event;
             $data['user'] = $user;
 
-            $this->view('event/daftar_umum', $data);
+            if ($event->jenjang == 'Umum') {
+              $this->view('event/daftar_umum', $data);
+            } else {
+              $this->view('event/daftar_khusus', $data);
+            }
           } else {
             return redirect('event');
           }
