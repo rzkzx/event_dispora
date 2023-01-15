@@ -30,8 +30,8 @@
               <span class="micon bi bi-person-fill"></span><span class="mtext">Kelola Pengguna</span>
             </a>
             <ul class="submenu" <?php echo ($data['menu'] == 'Pengguna') ? 'style="display:block;"' : ''; ?>>
-              <li><a href="<?= URLROOT; ?>/admin/user/instansi" class="<?php echo ($data['submenu'] == 'Akun Instansi') ? 'active' : ''; ?>">Akun Instansi</a></li>
               <li><a href="<?= URLROOT; ?>/admin/user/addinstansi" class="<?php echo ($data['submenu'] == 'Tambahkan Akun Instansi') ? 'active' : ''; ?>">Tambahkan Akun Instansi</a></li>
+              <li><a href="<?= URLROOT; ?>/admin/user/instansi" class="<?php echo ($data['submenu'] == 'Akun Instansi') ? 'active' : ''; ?>">Akun Instansi</a></li>
               <li><a href="<?= URLROOT; ?>/admin/user/peserta" class="<?php echo ($data['submenu'] == 'Akun Peserta') ? 'active' : ''; ?>">Akun Peserta</a></li>
             </ul>
           </li>

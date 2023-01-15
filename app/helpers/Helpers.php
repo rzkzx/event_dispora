@@ -32,7 +32,20 @@ function flash()
     unset($_SESSION['msg']);
 }
 
-
+function dayID($tanggal)
+{
+    $day = date('D', strtotime($tanggal));
+    $dayList = array(
+        'Sun' => 'Minggu',
+        'Mon' => 'Senin',
+        'Tue' => 'Selasa',
+        'Wed' => 'Rabu',
+        'Thu' => 'Kamis',
+        'Fri' => 'Jumat',
+        'Sat' => 'Sabtu'
+    );
+    return $dayList[$day];
+}
 
 function dateID($tanggal)
 {

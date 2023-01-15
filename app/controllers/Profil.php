@@ -21,13 +21,68 @@ class Profil extends Controller
   // Profil User Controller
   public function index()
   {
-    $user = $this->userModel->getPesertaLogged();
+    if ($_SESSION['level'] == 'peserta') {
+      $user = $this->userModel->getPesertaLogged();
 
-    $data = [
-      'title' => 'Profil Peserta',
-      'user' => $user
-    ];
+      $data = [
+        'title' => 'Profil Peserta',
+        'user' => $user
+      ];
+      $this->view('profil/peserta', $data);
+    } else {
+      $user = $this->userModel->getByLogin();
 
-    $this->view('profil/index', $data);
+      $data = [
+        'title' => 'Profil Pegawai',
+        'user' => $user
+      ];
+      $this->view('profil/pegawai', $data);
+    }
+  }
+
+  public function changePassword()
+  {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+      if (empty($_POST['password']) || empty($_POST['newPassword']) || empty($_POST['confirmNewPassword'])) {
+        $data['message'] = 'Form input tidak valid';
+        $data['status'] = 'error';
+        echo json_encode($data);
+      }
+      if ($_POST['newPassword'] !== $_POST['confirmNewPassword']) {
+        $data['message'] = 'Konfirmasi password tidak sama';
+        $data['status'] = 'error';
+        echo json_encode($data);
+      }
+      if ($this->userModel->changePassword($_POST)) {
+        $data['message'] = 'Berhasil ganti password';
+        $data['status'] = 'success';
+        echo json_encode($data);
+      } else {
+        $data['message'] = 'Gagal memperbarui password anda';
+        $data['status'] = 'error';
+        echo json_encode($data);
+      }
+    } else {
+      return redirect('profil');
+    }
+  }
+
+  public function changeProfile()
+  {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+      if (empty($_POST['nama']) || empty($_POST['jabatan'])) {
+        setFlash('Form input tidak boleh kosong', 'danger');
+        return redirect('profil');
+      }
+      if ($this->userModel->changeProfile($_POST, $_FILES)) {
+        setFlash('Berhasil memperbarui data anda', 'success');
+        return redirect('profil');
+      } else {
+        setFlash('Gagal memperbarui data anda', 'danger');
+        return redirect('profil');
+      }
+    } else {
+      return redirect('profil');
+    }
   }
 }

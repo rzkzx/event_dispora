@@ -40,7 +40,7 @@
               <?php
               if (!$data['event']->aktif) {
               ?>
-                <a href="#" class="btn btn-danger px-4">Event telah berakhir</a>
+                <a href="#" class="btn btn-danger px-4 disabled">Event telah berakhir</a>
                 <?php
               } else {
                 if (Middleware::isLoggedIn()) {
@@ -69,7 +69,7 @@
                   <li class="d-flex align-items-center"><i class="bi bi-geo-alt"></i> <a href="#"><?= $data['event']->lokasi ?></a></li>
                 </ul>
                 <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-calendar-event"></i> <a href="#"><time datetime="2020-01-01"><?= dateID($data['event']->tanggal) ?></time></a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-calendar-event"></i> <a href="#"><time datetime="2020-01-01"><?= dayID($data['event']->tanggal) ?>, <?= dateID($data['event']->tanggal) ?></time></a></li>
                 </ul>
               </div><!-- End meta top -->
 

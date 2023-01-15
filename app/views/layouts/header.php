@@ -20,6 +20,7 @@
   <!-- Vendor CSS Files -->
   <link href="<?= URLROOT; ?>/front/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="<?= URLROOT; ?>/front/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="<?= URLROOT; ?>/front/vendor/fontawesome/css/all.min.css" rel="stylesheet">
   <link href="<?= URLROOT; ?>/front/vendor/aos/aos.css" rel="stylesheet">
   <link href="<?= URLROOT; ?>/front/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="<?= URLROOT; ?>/front/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
@@ -28,12 +29,69 @@
   <!-- Template Main CSS File -->
   <link href="<?= URLROOT; ?>/front/css/main.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: Impact - v1.1.1
-  * Template URL: https://bootstrapmade.com/impact-bootstrap-business-website-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  <style>
+    .avatar-upload {
+      position: relative;
+      max-width: 205px;
+    }
+
+    .avatar-upload .avatar-edit {
+      position: absolute;
+      right: 12px;
+      z-index: 1;
+      top: 10px;
+    }
+
+    .avatar-upload .avatar-edit input {
+      display: none;
+    }
+
+    .avatar-upload .avatar-edit label {
+      display: inline-block;
+      width: 34px;
+      height: 34px;
+      margin-bottom: 0;
+      border-radius: 100%;
+      background: #FFFFFF;
+      border: 1px solid #d4d4d4;
+      box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+      cursor: pointer;
+      font-weight: normal;
+      transition: all .2s ease-in-out;
+    }
+
+    .avatar-upload .avatar-edit label:hover {
+      background: #f1f1f1;
+      border-color: #d6d6d6;
+    }
+
+    .avatar-upload .avatar-edit label i {
+      color: #404258;
+      position: absolute;
+      top: 10px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      margin: auto;
+    }
+
+    .avatar-preview {
+      width: 180px;
+      height: 180px;
+      position: relative;
+      border-radius: 100%;
+      box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.1);
+    }
+
+    .avatar-preview div {
+      width: 100%;
+      height: 100%;
+      border-radius: 100%;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  </style>
 </head>
 
 <body>

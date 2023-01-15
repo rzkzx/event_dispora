@@ -70,7 +70,7 @@
                               Ubah data informasi pribadi anda
                             </h4>
                             <div class="form-group row">
-                              <div class="col-sm-12">
+                              <div class="col-8">
                                 <div class="avatar-upload">
                                   <div class="avatar-edit">
                                     <input type="file" id="imageUpload" name="avatar" onchange="return avatarUpload()" accept=".png, .jpg, .jpeg" />
