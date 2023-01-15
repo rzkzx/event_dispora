@@ -30,4 +30,24 @@ class Saran extends Controller
 
     $this->view('admin/saran/index', $data);
   }
+
+  public function detail($id = '')
+  {
+    $saran = $this->saranModel->getById($id);
+
+    if ($saran) {
+      //replace new line on text mysql to <br> html
+      $saran->pesan = preg_replace("/\r\n|\r|\n/", '<br/>', $saran->pesan);
+
+      $data = [
+        'title' => 'Detail Kritik dan Tanya',
+        'menu' => 'Saran',
+        'saran' => $saran
+      ];
+
+      $this->view('admin/saran/detail', $data);
+    } else {
+      redirect('admin/saran/');
+    }
+  }
 }
