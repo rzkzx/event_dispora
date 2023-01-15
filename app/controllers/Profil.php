@@ -85,4 +85,23 @@ class Profil extends Controller
       return redirect('profil');
     }
   }
+
+  public function changeProfilePeserta()
+  {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+      if (empty($_POST['nama']) || empty($_POST['nik']) || empty($_POST['jenis_kelamin']) || empty($_POST['tempat_lahir']) || empty($_POST['tanggal_lahir']) || empty($_POST['alamat_ktp']) || empty($_POST['alamat_dom']) || empty($_POST['pendidikan']) || empty($_POST['pekerjaan']) || empty($_POST['no_hp'])) {
+        setFlash('Form input tidak boleh kosong', 'danger');
+        return redirect('profil');
+      }
+      if ($this->userModel->changeProfilePeserta($_POST, $_FILES)) {
+        setFlash('Berhasil memperbarui data anda', 'success');
+        return redirect('profil');
+      } else {
+        setFlash('Gagal memperbarui data anda', 'danger');
+        return redirect('profil');
+      }
+    } else {
+      return redirect('profil');
+    }
+  }
 }

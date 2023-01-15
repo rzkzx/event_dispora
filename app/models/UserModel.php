@@ -274,6 +274,67 @@ class UserModel
     }
   }
 
+  public function changeProfilePeserta($data, $files)
+  {
+    $newAvatarName = $_SESSION['foto'];
+    if ($files['avatar']['size'] > 0) {
+      $file_extension = pathinfo($files['avatar']['name'], PATHINFO_EXTENSION);
+      $allowed_extension = array(
+        "png",
+        "jpg",
+        "jpeg"
+      );
+
+      if (!in_array($file_extension, $allowed_extension)) {
+        return false;
+      }
+
+      $newAvatarName = rand(100, 100000) . '-' . $_SESSION['username'] . '.' . $file_extension;;
+
+      if ($files['avatar']['size'] < 2000 * 1000) {
+        if ($_SESSION['foto'] == NULL) {
+          move_uploaded_file($files['avatar']['tmp_name'], "../public/assets/images/user/" . $newAvatarName);
+        } else {
+          if (unlink("../public/assets/images/user/" . $_SESSION['foto'])) {
+            move_uploaded_file($files['avatar']['tmp_name'], "../public/assets/images/user/" . $newAvatarName);
+          }
+        }
+      } else {
+        return false;
+      }
+    }
+
+    $query = "UPDATE users SET nama=:nama,foto=:foto WHERE username=:username";
+    $this->db->query($query);
+    $this->db->bind(':username', $_SESSION['username']);
+    $this->db->bind(':nama', $data['nama']);
+    $this->db->bind(':foto', $newAvatarName);
+    $this->db->execute();
+
+    $query = "UPDATE user_peserta SET nama=:nama,nik=:nik, jenis_kelamin=:jenis_kelamin, tempat_lahir=:tempat_lahir, tanggal_lahir=:tanggal_lahir, alamat_ktp=:alamat_ktp, alamat_dom=:alamat_dom, pendidikan=:pendidikan, pekerjaan=:pekerjaan, no_hp=:no_hp,foto=:foto WHERE id_user=:id_user";
+    $this->db->query($query);
+    $this->db->bind(':id_user', $_SESSION['user_id']);
+    $this->db->bind(':nama', $data['nama']);
+    $this->db->bind(':nik', $data['nik']);
+    $this->db->bind(':jenis_kelamin', $data['jenis_kelamin']);
+    $this->db->bind(':tempat_lahir', $data['tempat_lahir']);
+    $this->db->bind(':tanggal_lahir', $data['tanggal_lahir']);
+    $this->db->bind(':alamat_ktp', $data['alamat_ktp']);
+    $this->db->bind(':alamat_dom', $data['alamat_dom']);
+    $this->db->bind(':pendidikan', $data['pendidikan']);
+    $this->db->bind(':pekerjaan', $data['pekerjaan']);
+    $this->db->bind(':no_hp', $data['no_hp']);
+    $this->db->bind(':foto', $newAvatarName);
+
+    if ($this->db->execute()) {
+      $_SESSION['nama'] = $data['nama'];
+      $_SESSION['foto'] = $newAvatarName;
+
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   public function delete($id)
   {
