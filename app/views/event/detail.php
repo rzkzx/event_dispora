@@ -46,7 +46,11 @@
                 if (Middleware::isLoggedIn()) {
                   if ($data['event']->jenjang == 'Umum') {
                     if ($_SESSION['level'] == 'peserta') {
-                      echo '<a href="' . URLROOT . './event/pendaftaran/' . $data['event']->id . '" class="btn btn-warning px-4">Daftar Event</a>';
+                      if ($data['pendaftaran']) {
+                        echo '<a href="' . URLROOT . '/profil' . '" class="btn btn-secondary px-4">Lihat Data Pendaftaran</a>';
+                      } else {
+                        echo '<a href="' . URLROOT . '/event/pendaftaran/' . $data['event']->id . '" class="btn btn-warning px-4">Daftar Event</a>';
+                      }
                     }
                   } else {
                     if ($_SESSION['level'] == 'pegawai') {

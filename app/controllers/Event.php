@@ -78,6 +78,9 @@ class Event extends Controller
         'event' => $event,
       ];
 
+      if ($_SESSION['level'] == 'peserta') {
+        $data['pendaftaran'] = $this->eventModel->getRiwayatPesertaByIdEvent($event->id);
+      }
       //replace new line on text mysql to <br> html
       $data['event']->deskripsi = preg_replace("/\r\n|\r|\n/", '<br/>', $data['event']->deskripsi);
 
@@ -177,7 +180,12 @@ class Event extends Controller
             $data['user'] = $user;
 
             if ($event->jenjang == 'Umum') {
-              $this->view('event/daftar_umum', $data);
+              $checkPendaftaran = $this->eventModel->getRiwayatPesertaByIdEvent($event->id);
+              if ($checkPendaftaran) {
+                return redirect('event/detail/' . $id);
+              } else {
+                $this->view('event/daftar_umum', $data);
+              }
             } else {
               $this->view('event/daftar_khusus', $data);
             }
