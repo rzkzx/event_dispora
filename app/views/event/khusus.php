@@ -32,11 +32,16 @@
 
 
         <?php foreach ($data['event'] as $event) {
+          if ($event->cover) {
+            $cover = $event->cover;
+          } else {
+            $cover = 'noimage.jpg';
+          }
         ?>
           <div class="col-lg-4 col-md-6">
             <div class="service-item  position-relative">
               <div class="image ">
-                <img src="<?= URLROOT ?>/assets/images/event/<?= $event->cover ?>" alt="<?= $event->nama ?> " class="img-fluid">
+                <img src="<?= URLROOT ?>/assets/images/event/<?= $cover ?>" alt="<?= $event->nama ?> " class="img-fluid">
               </div>
               <h3><br> <?= $event->nama ?> </h3>
               <div class="meta-top">
