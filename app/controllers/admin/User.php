@@ -122,6 +122,55 @@ class User extends Controller
     }
   }
 
+  // Tambah Akun Instansi Controller
+  public function editInstansi($id = '')
+  {
+    if (Middleware::isAdmin()) {
+      $data = [
+        'title' => 'Perbarui Akun Instansi',
+        'menu' => 'Pengguna',
+        'submenu' => 'Akun Instansi'
+      ];
+
+      //if event get posted by submit
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        if (empty($_POST['newPassword']) || empty($_POST['confirmNewPassword'])) {
+          $data['message'] = 'Form input tidak valid';
+          $data['status'] = 'error';
+          echo json_encode($data);
+        }
+        if ($_POST['newPassword'] !== $_POST['confirmNewPassword']) {
+          $data['message'] = 'Konfirmasi password tidak sama';
+          $data['status'] = 'error';
+          echo json_encode($data);
+        }
+        if ($this->userModel->editInstansi($id, $_POST)) {
+          $data['message'] = 'Berhasil perbarui password';
+          $data['status'] = 'success';
+          echo json_encode($data);
+        } else {
+          $data['message'] = 'Gagal memperbarui password';
+          $data['status'] = 'error';
+          echo json_encode($data);
+        }
+      } else {
+        $user = $this->userModel->getUserById($id);
+
+        if ($user) {
+          $data['user'] = $user;
+
+          $this->view('admin/pengguna/edit_instansi', $data);
+        } else {
+          return redirect('admin/user/instansi');
+        }
+      }
+    } else {
+      return redirect('admin/login');
+    }
+  }
+
+
   // Delete User Controller
   public function delete($id = '')
   {
@@ -140,7 +189,6 @@ class User extends Controller
       return redirect('admin');
     }
   }
-
 
   public function changePassword()
   {

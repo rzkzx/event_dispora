@@ -58,7 +58,7 @@
                         <i class="dw dw-more"></i>
                       </a>
                       <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                        <a class="dropdown-item" href="tambah-user.html"><i class="dw dw-edit2"></i> Edit</a>
+                        <a class="dropdown-item" href="<?= URLROOT; ?>/admin/user/editInstansi/<?= $user->id ?>"><i class="dw dw-edit2"></i> Edit</a>
                         <button type="button" class="dropdown-item" id="btnDelete" data-id="<?= $user->id ?>"><i class="dw dw-delete-3"></i> Delete</button>
                       </div>
                     </div>

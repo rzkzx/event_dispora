@@ -226,6 +226,26 @@ class UserModel
     }
   }
 
+  public function editInstansi($id, $data)
+  {
+    $query = "SELECT * FROM users WHERE id = :id";
+    $this->db->query($query);
+    $this->db->bind(':id', $id);
+
+    $user = $this->db->single();
+    if ($user) {
+      $query = "UPDATE users SET password=:password WHERE id=:id";
+      $this->db->query($query);
+      $this->db->bind(':id', $id);
+      $this->db->bind(':password', password_hash($data['newPassword'], PASSWORD_DEFAULT));
+
+      $this->db->execute();
+      return $this->db->rowCount();
+    } else {
+      return 0;
+    }
+  }
+
   public function changeProfile($data, $files)
   {
     $newAvatarName = $_SESSION['foto'];
