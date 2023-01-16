@@ -37,7 +37,7 @@
                 <div id="chart2"></div>
               </div>
               <div class="widget-data">
-                <div class="h4 mb-0">40</div>
+                <div class="h4 mb-0"><?= $data['jumlahPeserta'] ?></div>
                 <div class="weight-600 font-14">Jumlah Peserta</div>
               </div>
             </div>
@@ -50,7 +50,7 @@
                 <div id="chart3"></div>
               </div>
               <div class="widget-data">
-                <div class="h4 mb-0">350</div>
+                <div class="h4 mb-0"><?= $data['eventAktif'] ?></div>
                 <div class="weight-600 font-14">Event Sedang Berjalan</div>
               </div>
             </div>
@@ -63,7 +63,7 @@
                 <div id="chart4"></div>
               </div>
               <div class="widget-data">
-                <div class="h4 mb-0">$6060</div>
+                <div class="h4 mb-0"><?= $data['eventSelesai'] ?></div>
                 <div class="weight-600 font-14">Event Sudah Selesai </div>
               </div>
             </div>

@@ -71,6 +71,19 @@ class EventModel
     return $result;
   }
 
+  public function getBySelesai($limit = '')
+  {
+    if ($limit > 0) {
+      $this->db->query('SELECT * FROM ' . $this->table . ' WHERE aktif IS FALSE ORDER BY id DESC LIMIT ' . $limit);
+    } else {
+      $this->db->query('SELECT * FROM ' . $this->table . ' WHERE aktif IS FALSE ORDER BY id DESC');
+    }
+
+    $result = $this->db->resultSet();
+
+    return $result;
+  }
+
   public function getById($id)
   {
     $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id = :id');
@@ -323,6 +336,22 @@ class EventModel
   }
 
   // Get Data Peserta
+  public function getAllPesertaUmum()
+  {
+    $this->db->query('SELECT * FROM ' . $this->daftarUmum . '  ORDER BY id DESC');
+    $result = $this->db->resultSet();
+
+    return $result;
+  }
+
+  public function getAllPesertaDelegasi()
+  {
+    $this->db->query('SELECT * FROM ' . $this->daftarDelegasi . '  ORDER BY id DESC');
+    $result = $this->db->resultSet();
+
+    return $result;
+  }
+
   public function getPesertaByEvent($id)
   {
     $this->db->query('SELECT * FROM ' . $this->daftarUmum . ' WHERE id_event=:id_event ORDER BY id DESC');
