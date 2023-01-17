@@ -15,7 +15,7 @@
                   <a href="<?= URLROOT; ?>/admin/">Home</a>
                 </li>
                 <li class="breadcrumb-item">
-                  <a href="<?= URLROOT; ?>/admin/user/instansi">Akun Instansi</a>
+                  <a href="<?= URLROOT; ?>/admin/user/peserta">Akun Peserta</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
                   <?= $data['title'] ?>
@@ -30,7 +30,7 @@
       <div class="pd-20 card-box mb-30">
         <div class="clearfix">
           <div class="pull-left">
-            <h4 class="text-dark h4">Perbarui Password Akun Instasi</h4>
+            <h4 class="text-dark h4">Perbarui Password Akun Peserta</h4>
             <p class="mb-30"></p>
           </div>
         </div>
@@ -42,14 +42,6 @@
           <div class="form-group">
             <label>Username</label>
             <input class="form-control" type="text" value="<?= $data['user']->username ?>" aria-label="readonly input example" readonly />
-          </div>
-          <div class="form-group">
-            <label>Level</label>
-            <input class="form-control" type="text" value="<?= $data['user']->level_user ?>" aria-label="readonly input example" readonly />
-          </div>
-          <div class="form-group">
-            <label>Jabatan</label>
-            <input class="form-control" type="text" value="<?= $data['user']->jabatan ?>" aria-label="readonly input example" readonly />
           </div>
           <div class="form-group">
             <label> Ganti password akun</label>
@@ -109,7 +101,7 @@
               let confirmNewPassword = $("#renewPassword");
               $.ajax({
                 type: 'POST',
-                url: '<?= URLROOT ?>/admin/user/editInstansi/<?= $data['user']->id ?>',
+                url: '<?= URLROOT ?>/admin/user/editPeserta/<?= $data['user']->id ?>',
                 data: {
                   newPassword: newPassword.val(),
                   confirmNewPassword: confirmNewPassword.val()

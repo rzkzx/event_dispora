@@ -226,7 +226,7 @@ class UserModel
     }
   }
 
-  public function editInstansi($id, $data)
+  public function editPasswordPengguna($id, $data)
   {
     $query = "SELECT * FROM users WHERE id = :id";
     $this->db->query($query);
