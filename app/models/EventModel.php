@@ -403,6 +403,15 @@ class EventModel
     return $result;
   }
 
+  public function getRiwayatEventPegawai()
+  {
+    $this->db->query('SELECT * FROM ' . $this->daftarDelegasi . ' WHERE id_pegawai=:id_pegawai ORDER BY id_event DESC');
+    $this->db->bind('id_pegawai', $_SESSION['user_id']);
+    $result = $this->db->resultSet();
+
+    return $result;
+  }
+
   public function getRiwayatPesertaByIdEvent($id)
   {
     $this->db->query('SELECT * FROM user_peserta WHERE id_user = :id');

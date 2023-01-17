@@ -36,13 +36,32 @@ class Riwayat extends Controller
         'riwayat' => $riwayat,
         'event' => $event
       ];
+
       $this->view('riwayat/index', $data);
     } else {
+      $riwayat = $this->eventModel->getRiwayatEventPegawai();
+      $index = 1;
+      $event = [];
+
+      foreach ($riwayat as $v) {
+        $event[$index] = $this->eventModel->getById($v->id_event);
+        $index++;
+      }
+
+      // delete duplicate array event data
+      $result = array();
+      foreach ($event as $key => $value) {
+        if (!in_array($value, $result))
+          $result[$key] = $value;
+      }
 
       $data = [
         'title' => 'Riwayat Event',
+        'riwayat' => $riwayat,
+        'event' => $result
       ];
-      $this->view('profil/pegawai', $data);
+
+      $this->view('riwayat/index', $data);
     }
   }
 }

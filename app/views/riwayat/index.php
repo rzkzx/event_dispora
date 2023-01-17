@@ -62,8 +62,8 @@
                 <tbody>
                   <?php
                   $no = 1;
-                  foreach ($data['riwayat'] as $riwayat) {
-                    if ($data['event'][$no]->aktif) {
+                  foreach ($data['event'] as $riwayat) {
+                    if ($riwayat->aktif) {
                       $badge = 'warning';
                       $status = 'Berlangsung';
                     } else {
@@ -73,8 +73,8 @@
                   ?>
                     <tr>
                       <th scope="row"><?= $no ?></th>
-                      <td><?= $data['event'][$no]->nama ?></td>
-                      <td><?= dayID($data['event'][$no]->tanggal) ?>, <?= dateID($data['event'][$no]->tanggal) ?></td>
+                      <td><?= $riwayat->nama ?></td>
+                      <td><?= dayID($riwayat->tanggal) ?>, <?= dateID($riwayat->tanggal) ?></td>
                       <td>
                         <span class="rounded-pill badge bg-<?= $badge ?> text-dark"><?= $status ?></span>
                       </td>
