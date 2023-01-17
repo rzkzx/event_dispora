@@ -210,6 +210,7 @@
       } else {
         $("#password").removeClass("is-invalid");
         $("#passInvalid").hide();
+        passwordError = true;
       }
     }
 
@@ -232,6 +233,7 @@
       } else {
         $("#confPassword").removeClass("is-invalid");
         $("#confPassInvalid").hide();
+        confirmPasswordError = true;
       }
     }
 
