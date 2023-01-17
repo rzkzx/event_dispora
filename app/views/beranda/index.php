@@ -239,24 +239,23 @@
         </div>
 
         <div class="col-lg-6">
-          <form action="<?= URLROOT ?>/beranda/saran" method="post" role="form" class="php-pesan-form">
-            <?php flash() ?>
+          <form role="form" class="php-pesan-form">
             <div class="row">
               <div class="col form-group">
-                <input type="text" name="nama" class="form-control" id="name" placeholder="Nama" required>
+                <input type="text" name="nama" class="form-control" id="nama" placeholder="Nama" required>
               </div>
               <div class="col form-group">
                 <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
               </div>
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" name="no_hp" id="Nomor" placeholder="Nomor Telpon" required>
+              <input type="text" class="form-control" name="no_hp" id="no_hp" placeholder="Nomor Telpon" required>
             </div>
             <div class="form-group">
-              <textarea class="form-control" name="pesan" rows="5" placeholder="Pesan Kritik, Saran dan Pertanyaan" required></textarea>
+              <textarea class="form-control" name="pesan" id="pesan" rows="5" placeholder="Pesan Kritik, Saran dan Pertanyaan" required></textarea>
             </div>
             <div class="text-center">
-              <input type="submit" value="Kirim Pesan">
+              <button id="submitSaran" class="btn btn-warning mt-4" value="Kirim Pesan">Kirim Pesan</button>
             </div>
           </form>
         </div>
@@ -269,3 +268,110 @@
 </main><!-- End #main -->
 
 <?php require APPROOT . '/views/layouts/footer.php'; ?>
+
+<script>
+  $(document).ready(function() {
+
+    // validate form
+    let namaError = false;
+    $("#nama").keyup(function() {
+      let namaValue = $("#nama").val();
+      if (namaValue.length == "") {
+        $("#nama").addClass("is-invalid");
+        namaError = false;
+      } else {
+        $("#nama").removeClass("is-invalid");
+        namaError = true;
+      }
+    });
+
+    let emailError = false;
+    $("#email").keyup(function() {
+      let emailValue = $("#email").val();
+      if (emailValue.length == "") {
+        $("#email").addClass("is-invalid");
+        emailError = false;
+      } else {
+        $("#email").removeClass("is-invalid");
+        emailError = true;
+      }
+    });
+
+    let nohpError = false;
+    $("#no_hp").keyup(function() {
+      let nohpValue = $("#no_hp").val();
+      if (nohpValue.length == "") {
+        $("#no_hp").addClass("is-invalid");
+        nohpError = false;
+      } else {
+        $("#no_hp").removeClass("is-invalid");
+        nohpError = true;
+      }
+    });
+
+    let pesanError = false;
+    $("#pesan").keyup(function() {
+      let pesanValue = $("#pesan").val();
+      if (pesanValue.length == "") {
+        $("#pesan").addClass("is-invalid");
+        pesanError = false;
+      } else {
+        $("#pesan").removeClass("is-invalid");
+        pesanError = true;
+      }
+    });
+
+    $("#submitSaran").click(function() {
+      event.preventDefault();
+      if (
+        namaError == true && emailError == true &&
+        nohpError == true && pesanError == true
+      ) {
+        let nama = $("#nama");
+        let email = $("#email");
+        let no_hp = $("#no_hp");
+        let pesan = $("#pesan");
+        $.ajax({
+          type: 'POST',
+          url: '<?= URLROOT ?>/beranda/saran',
+          data: {
+            nama: nama.val(),
+            email: email.val(),
+            no_hp: no_hp.val(),
+            pesan: pesan.val()
+          },
+          dataType: "JSON",
+          success: function(data) {
+            Swal.fire(data.message, '', data.status).then((result) => {
+              if (result.isConfirmed) {
+                nama.val("");
+                email.val("");
+                no_hp.val("");
+                pesan.val("");
+              }
+            });
+          }
+        })
+      } else {
+        if (!namaError) {
+          $("#nama").addClass("is-invalid");
+        }
+        if (!emailError) {
+          $("#email").addClass("is-invalid");
+        }
+        if (!nohpError) {
+          $("#no_hp").addClass("is-invalid");
+        }
+        if (!pesanError) {
+          $("#pesan").addClass("is-invalid");
+        }
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Form input masih tidak valid',
+        })
+      }
+    });
+
+  });
+</script>

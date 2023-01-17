@@ -25,6 +25,7 @@
   <link href="<?= URLROOT; ?>/front/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="<?= URLROOT; ?>/front/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <link href="<?= URLROOT; ?>/front/vendor/tata/tata.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="<?= URLROOT; ?>/back/plugins/sweetalert2/sweetalert2.min.css" />
 
   <!-- Template Main CSS File -->
   <link href="<?= URLROOT; ?>/front/css/main.css" rel="stylesheet">

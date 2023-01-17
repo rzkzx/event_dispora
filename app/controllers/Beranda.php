@@ -29,15 +29,18 @@ class Beranda extends Controller
   {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       if (empty($_POST['nama']) || empty($_POST['email']) || empty($_POST['no_hp']) || empty($_POST['pesan'])) {
-        setFlash('Form tidak boleh kosong', 'success');
-        return redirect('beranda');
+        $data['message'] = 'Form input tidak valid';
+        $data['status'] = 'error';
+        echo json_encode($data);
       } else {
         if ($this->saranModel->add($_POST)) {
-          setFlash('Pesan anda terkirim', 'success');
-          return redirect('beranda');
+          $data['message'] = 'Pesan anda terkirim';
+          $data['status'] = 'success';
+          echo json_encode($data);
         } else {
-          setFlash('Gagal mengirim pesan', 'danger');
-          return redirect('beranda');
+          $data['message'] = 'Gagal mengirim pesan';
+          $data['status'] = 'error';
+          echo json_encode($data);
         }
       }
     } else {

@@ -82,6 +82,8 @@
 <script src="<?= URLROOT; ?>/front/vendor/swiper/swiper-bundle.min.js"></script>
 <script src="<?= URLROOT; ?>/front/vendor/isotope-layout/isotope.pkgd.min.js"></script>
 <script src="<?= URLROOT; ?>/front/vendor/tata/tata.js"></script>
+<!-- add sweet alert js & css in footer -->
+<script src="<?= URLROOT; ?>/back/plugins/sweetalert2/sweetalert2.min.js"></script>
 <!-- Template Main JS File -->
 <script src="<?= URLROOT; ?>/front/js/main.js"></script>
 
