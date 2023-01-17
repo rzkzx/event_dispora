@@ -38,32 +38,64 @@ class Event extends Controller
 
 
   // Detail Event Controller
-  public function detail($id = '')
+  public function detail($id = '', $params = '', $idpeserta = '')
   {
     // get data event with id
     $event = $this->eventModel->getById($id);
-    $peserta = $this->eventModel->getPesertaByEvent($id);
 
     if ($event) {
-      $data = [
-        'title' => 'Detail Event',
-        'menu' => 'Event',
-        'submenu' => 'Agenda Event',
-        'event' => $event,
-        'peserta' => $peserta
-      ];
+      if ($params == 'peserta') {
+        if ($event->jenjang == 'Umum') {
+          $peserta = $this->eventModel->getPesertaUmumById($idpeserta);
+        } else {
+          $peserta = $this->eventModel->getPesertaDelegasiById($idpeserta);
+        }
 
-      //replace new line on text mysql to <br> html
-      $data['event']->deskripsi = preg_replace("/\r\n|\r|\n/", '<br/>', $data['event']->deskripsi);
+        if ($peserta) {
+          if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $jenjang = $event->jenjang;
+            if ($this->eventModel->konfirmasiPeserta($jenjang, $idpeserta, $_POST['status'])) {
+              setFlash('Berhasil konfirmasi Peserta', 'success');
+            } else {
+              setFlash('Gagal konfirmasi Peserta', 'danger');
+            }
+          } else {
+            $data = [
+              'title' => 'Detail Peserta Event',
+              'menu' => 'Event',
+              'submenu' => 'Agenda Event',
+              'event' => $event,
+              'peserta' => $peserta,
+            ];
 
-      //check event have a cover
-      if ($data['event']->cover) {
-        $data['event']->cover = $data['event']->cover;
+            $this->view('admin/event/detail_peserta', $data);
+          }
+        } else {
+          return redirect('admin/event/detail/' . $id);
+        }
       } else {
-        $data['event']->cover = 'noimage.jpg';
-      }
+        $peserta = $this->eventModel->getPesertaByEvent($id);
 
-      $this->view('admin/event/detail', $data);
+        $data = [
+          'title' => 'Detail Event',
+          'menu' => 'Event',
+          'submenu' => 'Agenda Event',
+          'event' => $event,
+          'peserta' => $peserta,
+        ];
+
+        //replace new line on text mysql to <br> html
+        $data['event']->deskripsi = preg_replace("/\r\n|\r|\n/", '<br/>', $data['event']->deskripsi);
+
+        //check event have a cover
+        if ($data['event']->cover) {
+          $data['event']->cover = $data['event']->cover;
+        } else {
+          $data['event']->cover = 'noimage.jpg';
+        }
+
+        $this->view('admin/event/detail', $data);
+      }
     } else {
       return redirect('admin/event');
     }

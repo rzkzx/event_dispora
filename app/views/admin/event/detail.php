@@ -59,7 +59,6 @@
               <button type="button" class="btn btn-danger mt-15" id="btnAkhiri" data-id="<?= $data['event']->id ?>">Akhiri Event</button>
             </div>
           <?php } ?>
-
         </div>
       </div>
 
@@ -69,6 +68,7 @@
           <h4 class="text-dark h4">Data Peserta Event</h4>
         </div>
         <div class="pb-20">
+          <?php flash() ?>
           <table class="table hover multiple-select-row data-table-export nowrap">
             <thead>
               <tr>
@@ -76,9 +76,11 @@
                 <th class="table-plus datatable-nosort">Nama Peserta</th>
                 <th>NIK</th>
                 <th>Pendidikan</th>
-                <th>Tanggal Daftar</th>
+                <th>Waktu Daftar</th>
                 <th class="datatable-nosort">Status</th>
-                <th class="datatable-nosort">Action</th>
+                <?php if ($data['event']->aktif) { ?>
+                  <th class="datatable-nosort">Action</th>
+                <?php } ?>
               </tr>
             </thead>
             <tbody>
@@ -100,17 +102,19 @@
                   <td><?= $peserta->pendidikan ?></td>
                   <td><?= $peserta->waktu_daftar ?></td>
                   <td><span class="badge bg-<?= $badge ?> text-uppercase"><?= $peserta->status ?></span></td>
-                  <td>
-                    <div class="dropdown">
-                      <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                        <i class="dw dw-more"></i>
-                      </a>
-                      <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                        <a class="dropdown-item" href="detail-peserta.html"><i class="dw dw-eye"></i> View</a>
-                        <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
+                  <?php if ($data['event']->aktif) { ?>
+                    <td>
+                      <div class="dropdown">
+                        <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                          <i class="dw dw-more"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                          <a class="dropdown-item" href="<?= URLROOT; ?>/admin/event/detail/<?= $data['event']->id ?>/peserta/<?= $peserta->id ?>"><i class="dw dw-eye"></i> View</a>
+                          <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
+                        </div>
                       </div>
-                    </div>
-                  </td>
+                    </td>
+                  <?php } ?>
                 </tr>
               <?php
                 $no++;

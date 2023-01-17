@@ -352,9 +352,37 @@ class EventModel
     return $result;
   }
 
+  public function getPesertaUmumById($id)
+  {
+    $this->db->query('SELECT * FROM ' . $this->daftarUmum . ' WHERE id=:id ORDER BY id DESC');
+    $this->db->bind('id', $id);
+    $row = $this->db->single();
+
+    return $row;
+  }
+
+  public function getPesertaDelegasiById($id)
+  {
+    $this->db->query('SELECT * FROM ' . $this->daftarDelegasi . ' WHERE id=:id ORDER BY id DESC');
+    $this->db->bind('id', $id);
+    $row = $this->db->single();
+
+    return $row;
+  }
+
   public function getPesertaByEvent($id)
   {
-    $this->db->query('SELECT * FROM ' . $this->daftarUmum . ' WHERE id_event=:id_event ORDER BY id DESC');
+    $this->db->query('SELECT * FROM detail_event WHERE id= :id');
+    $this->db->bind(':id', $id);
+    $event = $this->db->single();
+
+    if ($event->jenjang == 'Umum') {
+      $table = $this->daftarUmum;
+    } else {
+      $table = $this->daftarDelegasi;
+    }
+
+    $this->db->query('SELECT * FROM ' . $table . ' WHERE id_event=:id_event ORDER BY id DESC');
     $this->db->bind('id_event', $id);
     $result = $this->db->resultSet();
 
@@ -375,5 +403,26 @@ class EventModel
     $result = $this->db->single();
 
     return $result;
+  }
+
+  public function konfirmasiPeserta($jenjang, $id, $status)
+  {
+    if ($jenjang == 'Umum') {
+      $table = $this->daftarUmum;
+    } else {
+      $table = $this->daftarDelegasi;
+    }
+
+    $query = "UPDATE " . $table . " SET status=:status WHERE id=:id";
+    $this->db->query($query);
+    $this->db->bind('id', $id);
+    $this->db->bind('status', $status);
+    $this->db->execute();
+
+    if ($this->db->execute()) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
