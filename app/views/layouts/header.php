@@ -157,7 +157,7 @@
                   <hr class="dropdown-divider">
                 </li>
                 <li>
-                  <a class="dropdown-item d-flex align-items-center" href="#">
+                  <a class="dropdown-item d-flex align-items-center" href="<?= URLROOT; ?>/riwayat">
                     <i class="bi bi-clock-history"></i>
                     <span>Riwayat Event</span>
                   </a>

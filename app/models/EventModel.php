@@ -389,13 +389,26 @@ class EventModel
     return $result;
   }
 
-  public function getRiwayatPesertaByIdEvent($id)
+  public function getRiwayatEventPeserta()
   {
     $this->db->query('SELECT * FROM user_peserta WHERE id_user = :id');
     $this->db->bind(':id', $_SESSION['user_id']);
 
     $user = $this->db->single();
 
+    $this->db->query('SELECT * FROM ' . $this->daftarUmum . ' WHERE id_peserta=:id_peserta ORDER BY id_event DESC');
+    $this->db->bind('id_peserta', $user->id);
+    $result = $this->db->resultSet();
+
+    return $result;
+  }
+
+  public function getRiwayatPesertaByIdEvent($id)
+  {
+    $this->db->query('SELECT * FROM user_peserta WHERE id_user = :id');
+    $this->db->bind(':id', $_SESSION['user_id']);
+
+    $user = $this->db->single();
 
     $this->db->query('SELECT * FROM ' . $this->daftarUmum . ' WHERE id_event=:id_event AND id_peserta=:id_peserta');
     $this->db->bind('id_event', $id);
