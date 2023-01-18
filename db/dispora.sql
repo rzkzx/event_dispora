@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 16, 2023 at 03:00 PM
+-- Generation Time: Jan 18, 2023 at 03:16 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -52,8 +52,8 @@ INSERT INTO `detail_event` (`id`, `nama`, `jenis`, `jenjang`, `lokasi`, `tanggal
 (13, 'Festival Valentine', 'Pemuda', 'Umum', 'Kandangan', '2023-01-03', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '39646-495521.jpg', 1),
 (14, 'Jalan Santuy', 'Olahraga', 'Umum', 'Banjarmasin', '2023-01-14', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Odio euismod lacinia at quis risus sed vulputate odio. Pulvinar proin gravida hendrerit lectus. Condimentum mattis pellentesque id nibh. Luctus venenatis lectus magna fringilla urna porttitor rhoncus dolor purus. Massa tempor nec feugiat nisl pretium fusce id velit ut. Purus viverra accumsan in nisl nisi scelerisque eu ultrices. Velit egestas dui id ornare arcu. Vivamus arcu felis bibendum ut tristique et egestas quis. Et egestas quis ipsum suspendisse. Pellentesque elit eget gravida cum sociis. Porta non pulvinar neque laoreet suspendisse interdum consectetur libero. Scelerisque fermentum dui faucibus in ornare quam. Quis blandit turpis cursus in hac. Mattis vulputate enim nulla aliquet porttitor lacus luctus accumsan. Maecenas volutpat blandit aliquam etiam erat velit scelerisque. Faucibus scelerisque eleifend donec pretium vulputate sapien nec sagittis. Mi ipsum faucibus vitae aliquet nec ullamcorper.\r\n\r\nSed felis eget velit aliquet sagittis id consectetur purus ut. A erat nam at lectus urna duis convallis convallis tellus. Felis donec et odio pellentesque diam volutpat commodo. Enim neque volutpat ac tincidunt vitae semper quis. Aliquam sem fringilla ut morbi tincidunt. At imperdiet dui accumsan sit amet nulla facilisi morbi tempus. Lacus sed turpis tincidunt id aliquet. Sagittis orci a scelerisque purus semper eget duis at. At in tellus integer feugiat scelerisque varius morbi enim nunc. Tortor aliquam nulla facilisi cras. Augue neque gravida in fermentum. A condimentum vitae sapien pellentesque habitant. Blandit cursus risus at ultrices. Eu ultrices vitae auctor eu augue ut lectus arcu bibendum. Vel pretium lectus quam id leo in vitae turpis massa. Commodo nulla facilisi nullam vehicula ipsum. Neque aliquam vestibulum morbi blandit cursus risus. Condimentum mattis pellentesque id nibh tortor id.\r\n\r\nEuismod lacinia at quis risus sed vulputate odio. Laoreet non curabitur gravida arcu ac tortor dignissim convallis aenean. Non pulvinar neque laoreet suspendisse interdum consectetur libero id. Dolor sit amet consectetur adipiscing elit ut aliquam. At consectetur lorem donec massa sapien faucibus et. Ut ornare lectus sit amet est placerat. Habitasse platea dictumst quisque sagittis purus sit amet. Nisi quis eleifend quam adipiscing vitae proin sagittis nisl rhoncus. Nulla pellentesque dignissim enim sit amet. Amet mattis vulputate enim nulla aliquet. Neque laoreet suspendisse interdum consectetur libero id faucibus. Orci eu lobortis elementum nibh.\r\n\r\nDiam phasellus vestibulum lorem sed risus. Enim sit amet venenatis urna cursus eget nunc scelerisque. Suspendisse faucibus interdum posuere lorem ipsum dolor sit amet consectetur. Et sollicitudin ac orci phasellus. Urna et pharetra pharetra massa. Sit amet luctus venenatis lectus. Morbi tempus iaculis urna id volutpat lacus laoreet non curabitur. Sit amet facilisis magna etiam tempor orci. Adipiscing enim eu turpis egestas. Quis viverra nibh cras pulvinar mattis nunc sed. Faucibus interdum posuere lorem ipsum. Sit amet venenatis urna cursus.\r\n\r\nLectus magna fringilla urna porttitor rhoncus dolor purus non enim. Vitae tempus quam pellentesque nec. Eros donec ac odio tempor. Lectus urna duis convallis convallis tellus. Pellentesque elit ullamcorper dignissim cras tincidunt lobortis. Tristique senectus et netus et malesuada fames. Donec et odio pellentesque diam volutpat commodo sed egestas egestas. Nascetur ridiculus mus mauris vitae ultricies. Id venenatis a condimentum vitae sapien pellentesque habitant morbi. Enim blandit volutpat maecenas volutpat blandit aliquam etiam erat. Ac odio tempor orci dapibus ultrices in iaculis nunc. Et netus et malesuada fames ac turpis egestas. Egestas tellus rutrum tellus pellentesque eu tincidunt tortor.', '23801-event2.jpg', 1),
 (15, 'Lari Santuy Cuy', 'Pemuda', 'Umum', 'Pelaihari', '2023-01-22', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id volutpat lacus laoreet non curabitur. Dolor sit amet consectetur adipiscing elit duis tristique sollicitudin nibh. Felis bibendum ut tristique et. Mattis vulputate enim nulla aliquet porttitor lacus luctus accumsan tortor. Donec enim diam vulputate ut pharetra sit amet aliquam id. Cursus euismod quis viverra nibh cras. Et tortor at risus viverra. Venenatis tellus in metus vulputate eu scelerisque felis imperdiet proin. Pellentesque eu tincidunt tortor aliquam nulla facilisi. Enim neque volutpat ac tincidunt vitae semper quis lectus. Consequat nisl vel pretium lectus quam id. Egestas sed sed risus pretium quam. Et malesuada fames ac turpis egestas integer eget aliquet.\r\n\r\nDui sapien eget mi proin sed libero. Maecenas accumsan lacus vel facilisis. Ac orci phasellus egestas tellus rutrum. Amet consectetur adipiscing elit duis tristique. Commodo nulla facilisi nullam vehicula ipsum a arcu cursus. Metus vulputate eu scelerisque felis imperdiet proin. Lorem ipsum dolor sit amet consectetur adipiscing. Quam id leo in vitae turpis massa. Amet massa vitae tortor condimentum lacinia quis. Dui faucibus in ornare quam. Ultrices sagittis orci a scelerisque purus. Id aliquet risus feugiat in ante metus. Blandit turpis cursus in hac habitasse platea dictumst quisque.', '91358-basketball.jpg', 1),
-(16, 'Laporan Marathon', 'Olahraga', 'Umum', 'Banjarbaru', '2023-01-27', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Morbi tristique senectus et netus et malesuada fames ac. Amet mattis vulputate enim nulla. Mi sit amet mauris commodo quis imperdiet massa tincidunt. Convallis posuere morbi leo urna molestie at elementum eu facilisis. Nullam ac tortor vitae purus faucibus ornare. Volutpat diam ut venenatis tellus in. Nascetur ridiculus mus mauris vitae ultricies. Pretium viverra suspendisse potenti nullam ac tortor vitae purus. Cursus vitae congue mauris rhoncus aenean vel. Amet mattis vulputate enim nulla aliquet porttitor lacus. Cursus sit amet dictum sit amet justo donec. Amet dictum sit amet justo donec enim. Aliquet lectus proin nibh nisl condimentum id venenatis a. Ipsum a arcu cursus vitae congue. Elementum integer enim neque volutpat ac tincidunt vitae. Urna neque viverra justo nec. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non. Nulla malesuada pellentesque elit eget gravida. Facilisis leo vel fringilla est ullamcorper eget nulla.\r\n\r\nImperdiet proin fermentum leo vel. Lobortis scelerisque fermentum dui faucibus in. Cras tincidunt lobortis feugiat vivamus at. Semper eget duis at tellus at urna condimentum mattis pellentesque. Sit amet nisl suscipit adipiscing bibendum est ultricies integer quis. Volutpat est velit egestas dui id ornare arcu odio. Sit amet purus gravida quis blandit turpis cursus in. Cras adipiscing enim eu turpis egestas pretium. Dui nunc mattis enim ut tellus. Nulla porttitor massa id neque aliquam. Faucibus purus in massa tempor. Tempus imperdiet nulla malesuada pellentesque. Donec ultrices tincidunt arcu non sodales neque sodales. In massa tempor nec feugiat nisl pretium fusce.', '65988-basketball.jpg', 0),
-(17, 'TES', 'Olahraga', 'Khusus', 'tes', '2023-01-28', 'lorem lorem lroemr elro lorem lorem lroemr elrolorem lorem lroemr elrolorem lorem lroemr elrolorem lorem lroemr elrolorem lorem lroemr elrolorem lorem lroemr elro\r\nlorem lorem lroemr elrolorem lorem lroemr elrolorem lorem lroemr elrolorem lorem lroemr elrolorem lorem lroemr elrolorem lorem lroemr elro\r\nlorem lorem lroemr elrolorem lorem lroemr elrolorem lorem lroemr elro\r\n\r\n\r\nlorem lorem lroemr elrolorem lorem lroemr elrolorem lorem lroemr elrolorem lorem lroemr elro\r\nlorem lorem lroemr elrolorem lorem lroemr elro\r\nlorem lorem lroemr elro', NULL, 1);
+(16, 'Laporan Marathon', 'Olahraga', 'Umum', 'Banjarbaru', '2023-01-27', 'Lorem Kopsom ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Morbi tristique senectus et netus et malesuada fames ac. Amet mattis vulputate enim nulla. Mi sit amet mauris commodo quis imperdiet massa tincidunt. Convallis posuere morbi leo urna molestie at elementum eu facilisis. Nullam ac tortor vitae purus faucibus ornare. Volutpat diam ut venenatis tellus in. Nascetur ridiculus mus mauris vitae ultricies. Pretium viverra suspendisse potenti nullam ac tortor vitae purus. Cursus vitae congue mauris rhoncus aenean vel. Amet mattis vulputate enim nulla aliquet porttitor lacus. Cursus sit amet dictum sit amet justo donec. Amet dictum sit amet justo donec enim. Aliquet lectus proin nibh nisl condimentum id venenatis a. Ipsum a arcu cursus vitae congue. Elementum integer enim neque volutpat ac tincidunt vitae. Urna neque viverra justo nec. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non. Nulla malesuada pellentesque elit eget gravida. Facilisis leo vel fringilla est ullamcorper eget nulla.\n\nImperdiet proin fermentum leo vel. Lobortis scelerisque fermentum dui faucibus in. Cras tincidunt lobortis feugiat vivamus at. Semper eget duis at tellus at urna condimentum mattis pellentesque. Sit amet nisl suscipit adipiscing bibendum est ultricies integer quis. Volutpat est velit egestas dui id ornare arcu odio. Sit amet purus gravida quis blandit turpis cursus in. Cras adipiscing enim eu turpis egestas pretium. Dui nunc mattis enim ut tellus. Nulla porttitor massa id neque aliquam. Faucibus purus in massa tempor. Tempus imperdiet nulla malesuada pellentesque. Donec ultrices tincidunt arcu non sodales neque sodales. In massa tempor nec feugiat nisl pretium fusce.', '65988-basketball.jpg', 0),
+(17, 'TES', 'Olahraga', 'Khusus', 'tes', '2023-01-28', 'lorem lorem lroemr elro lorem lorem lroemr elrolorem lorem lroemr elrolorem lorem lroemr elrolorem lorem lroemr elrolorem lorem lroemr elrolorem lorem lroemr elro\r\nlorem lorem lroemr elrolorem lorem lroemr elrolorem lorem lroemr elrolorem lorem lroemr elrolorem lorem lroemr elrolorem lorem lroemr elro\r\nlorem lorem lroemr elrolorem lorem lroemr elrolorem lorem lroemr elro\r\n\r\n\r\nlorem lorem lroemr elrolorem lorem lroemr elrolorem lorem lroemr elrolorem lorem lroemr elro\r\nlorem lorem lroemr elrolorem lorem lroemr elro\r\nlorem lorem lroemr elro', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -79,15 +79,18 @@ CREATE TABLE `form_daftardelegasi` (
   `email` varchar(255) DEFAULT NULL,
   `upload_identitas` varchar(255) DEFAULT NULL,
   `berkas_syarat` varchar(255) DEFAULT NULL,
-  `waktu_daftar` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `waktu_daftar` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `status` enum('menunggu','diterima','ditolak') NOT NULL DEFAULT 'menunggu'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `form_daftardelegasi`
 --
 
-INSERT INTO `form_daftardelegasi` (`id`, `id_pegawai`, `id_event`, `asal_daerah`, `nama`, `nik`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `alamat_ktp`, `alamat_dom`, `pendidikan`, `pekerjaan`, `no_hp`, `email`, `upload_identitas`, `berkas_syarat`, `waktu_daftar`) VALUES
-(1, 2, 10, 'Hulu Sungai Utara', 'Ezra Garendra', '63081246123', 'Laki-laki', 'Amuntai', '2001-01-27', 'Banjarbaru', 'Banjarbaru', 'Sarjana', 'Data Analyst', '1044070', 'kyzeluci@gmail.com', '13958-63081246123.docx', '27973-63081246123.pdf', '2023-01-15 16:33:01');
+INSERT INTO `form_daftardelegasi` (`id`, `id_pegawai`, `id_event`, `asal_daerah`, `nama`, `nik`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `alamat_ktp`, `alamat_dom`, `pendidikan`, `pekerjaan`, `no_hp`, `email`, `upload_identitas`, `berkas_syarat`, `waktu_daftar`, `status`) VALUES
+(1, 2, 10, 'Hulu Sungai Utara', 'Ezra Garendra', '63081246123', 'Laki-laki', 'Amuntai', '2001-01-27', 'Banjarbaru', 'Banjarbaru', 'Sarjana', 'Data Analyst', '1044070', 'kyzeluci@gmail.com', '13958-63081246123.docx', '27973-63081246123.pdf', '2023-01-17 11:02:00', 'diterima'),
+(2, 2, 10, 'Tanah Laut', 'Ridho Azhari Ansyari', '640127394612', 'Laki-laki', 'BANJARBASIH', '2023-01-17', 'MUARA BUNTOK', 'TEWEH', 'SARJANA', 'Swasta', '1044070', 'ridzondas@gmail.com', '34226-640127394612.pdf', '98177-640127394612.docx', '2023-01-17 14:11:49', 'diterima'),
+(3, 2, 17, 'Banjar', 'tes', 'tes', 'Perempuan', 'tes', '2023-01-17', 'tes', 'tes', 'tes', 'tes', '3243242', 'asddhan@gmail.com', '6066-tes.docx', '66953-tes.pdf', '2023-01-17 13:47:53', 'menunggu');
 
 -- --------------------------------------------------------
 
@@ -120,8 +123,8 @@ CREATE TABLE `form_pendaftaran` (
 --
 
 INSERT INTO `form_pendaftaran` (`id`, `id_event`, `id_peserta`, `nama`, `nik`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `alamat_ktp`, `alamat_dom`, `pendidikan`, `pekerjaan`, `no_hp`, `upload_identitas`, `berkas_syarat`, `waktu_daftar`, `status`) VALUES
-(3, 14, 2, 'Melyana', '620123456789', 'Perempuan', 'Amuntai', '2022-07-18', 'Puruk Cahu', 'Banjarmasin', 'SMA', 'Pelajar', 2147483647, '34184-620123456789.pdf', '87499-620123456789.docx', '2023-01-06 04:52:49', 'menunggu'),
-(4, 16, 2, 'Melyana', '620123456789', 'Perempuan', 'Amuntai', '2022-07-18', 'Puruk Cahu', 'Banjarmasin', 'SMA', 'Pelajar', 2147483647, NULL, NULL, '2023-01-08 05:18:38', 'diterima');
+(3, 14, 2, 'Melyana', '620123456789', 'Perempuan', 'Amuntai', '2022-07-18', 'Puruk Cahu', 'Banjarmasin', 'SMA', 'Pelajar', 2147483647, '34184-620123456789.pdf', '87499-620123456789.docx', '2023-01-17 10:48:35', 'diterima'),
+(4, 16, 2, 'Melyana', '620123456789', 'Perempuan', 'Amuntai', '2022-07-18', 'Puruk Cahu', 'Banjarmasin', 'SMA', 'Pelajar', 2147483647, NULL, NULL, '2023-01-18 02:40:07', 'diterima');
 
 -- --------------------------------------------------------
 
@@ -153,7 +156,10 @@ INSERT INTO `form_saran` (`id`, `nama`, `email`, `no_hp`, `pesan`, `tanggal`) VA
 (8, 'Ezra Garendraa', 'kyzeluci@gmail.com', '21381231298312', 'sadsadasdasd', '2023-01-05'),
 (9, 'Ridho Azhari Ansyari', 'ridzondas@gmail.com', '1044070', 'asdsadsadsadasdsadsad', '2023-01-05'),
 (10, 'yaya', 'ridzondas@gmail.com', '1044070', 'asdsadsa', '2023-01-06'),
-(11, 'nana', 'asd@asd.asd', '097123', 'djslsad', '2023-01-15');
+(11, 'nana', 'asd@asd.asd', '097123', 'djslsad', '2023-01-15'),
+(12, 'nana', 'asd@asd.asd', '0821212199', 'tidak ada pesan tersirat unutk dirimu', '2023-01-17'),
+(13, 'Melyana', 'melyana@gmail.com', '0821212199', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '2023-01-17'),
+(14, 'GEGEGE', 'asd@asd.asd', '12312312123', 'asdsadasdsadsadsa', '2023-01-18');
 
 -- --------------------------------------------------------
 
@@ -179,8 +185,9 @@ INSERT INTO `users` (`id`, `username`, `level_user`, `nama`, `password`, `jabata
 (2, 'pegawai', 'pegawai', 'Roman Zidan Ramadhan', '$2y$10$oJ94gJKzL1WkeolKBodE8OKQjMfCfPg2a7ecrRSS4y1hWve3COQs.', 'Pegawai Dinas Kota', '87076-pegawai.jpeg'),
 (3, 'panitia', 'panitia', 'Panitian', '$2y$10$ife9m.Qs4U6B81ADZkrjpe.OEfo.ydOC47GKsdySgnM6qq8TgUfU.', 'Panitia Event', '99056-panitia.jpeg'),
 (4, 'kyze', 'panitia', 'Kyze Luci', '$2y$10$udLhBRYLOs0no1k3HbqCseg5.ljIspzVSWuWg6Aixt00/OVtpduk2', 'Mahasiswa', '49446-kyze.jpg'),
-(6, 'melyana123', 'peserta', 'Melyanaaaa', '$2y$10$UbNIMgeCSS6D7NV70OlAmu0m.ztayKF629rnVCda8/AE9eQKg3W5u', NULL, '53405-melyana123.jpg'),
-(22, 'admin', 'admin', 'Admin MANTAP', '$2y$10$fSQ8DsB4FrkthIb2z6AnR.oheVjqmkGBTbDz9gj8HVPevAGtm6gbW', 'ADMIN KODING', '72511-admin.png');
+(6, 'melyana123', 'peserta', 'Melyanaaaa', '$2y$10$I3Ckp8mHVztGv0.qmrCWje5pymbP3gNynfQY5hkBAeRzqVFxgCzJ.', NULL, '53405-melyana123.jpg'),
+(22, 'admin', 'admin', 'Admin MANTAP', '$2y$10$fSQ8DsB4FrkthIb2z6AnR.oheVjqmkGBTbDz9gj8HVPevAGtm6gbW', 'ADMIN KODING', '72511-admin.png'),
+(25, 'roman', 'peserta', 'Roman Zidan', '$2y$10$Ud7iGpq9N/ch.AiayAcK/OoBWPMhDKFsLnEa6Tvb6qACnBKl4bI76', NULL, '97151-roman.jpeg');
 
 -- --------------------------------------------------------
 
@@ -210,7 +217,8 @@ CREATE TABLE `user_peserta` (
 --
 
 INSERT INTO `user_peserta` (`id`, `id_user`, `nama`, `nik`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `alamat_ktp`, `alamat_dom`, `pendidikan`, `pekerjaan`, `no_hp`, `foto`, `created_at`) VALUES
-(2, 6, 'Melyanaaaa', '620123456789', 'Perempuan', 'Amuntai', '2000-10-12', 'Puruk Cahu', 'Banjarmasin', 'SMA', 'Pelajar', '0821212199', '53405-melyana123.jpg', '2023-01-15 15:47:57');
+(2, 6, 'Melyanaaaa', '620123456789', 'Perempuan', 'Amuntai', '2000-10-12', 'Puruk Cahu', 'Banjarmasin', 'SMA', 'Pelajar', '0821212199', '53405-melyana123.jpg', '2023-01-15 15:47:57'),
+(10, 25, 'Roman Zidan', '6308000121246123', 'Laki-Laki', 'Amuntai', '2000-01-17', 'Banjarbaru', 'Banjarbaru', 'Sarjana', 'Data Analyst', '+6281345233332', '97151-roman.jpeg', '2023-01-17 15:10:32');
 
 --
 -- Indexes for dumped tables
@@ -271,7 +279,7 @@ ALTER TABLE `detail_event`
 -- AUTO_INCREMENT for table `form_daftardelegasi`
 --
 ALTER TABLE `form_daftardelegasi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `form_pendaftaran`
@@ -283,19 +291,19 @@ ALTER TABLE `form_pendaftaran`
 -- AUTO_INCREMENT for table `form_saran`
 --
 ALTER TABLE `form_saran`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `user_peserta`
 --
 ALTER TABLE `user_peserta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables

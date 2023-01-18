@@ -241,17 +241,17 @@
         <div class="col-lg-6">
           <form role="form" class="php-pesan-form">
             <div class="row">
-              <div class="col form-group">
+              <div class="col form-group mb-3">
                 <input type="text" name="nama" class="form-control" id="nama" placeholder="Nama" required>
               </div>
-              <div class="col form-group">
+              <div class="col form-group mb-3">
                 <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
               </div>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
               <input type="text" class="form-control" name="no_hp" id="no_hp" placeholder="Nomor Telpon" required>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
               <textarea class="form-control" name="pesan" id="pesan" rows="5" placeholder="Pesan Kritik, Saran dan Pertanyaan" required></textarea>
             </div>
             <div class="text-center">
