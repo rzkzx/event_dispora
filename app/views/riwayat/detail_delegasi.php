@@ -97,9 +97,13 @@
                         <span class="badge rounded-pill bg-<?= $badge ?> text-dark text-uppercase"><?= $peserta->status ?></span>
                       </td>
                       <td>
-                        <a href="#" class="btn btn-link"><i class="bi bi-eye"></i></a>
-                        <a href="#" class="btn btn-link"><i class="bi bi-pencil"></i></a>
-                        <a href="#" class="btn btn-link"><i class="bi bi-trash"></i></a>
+                        <a href="<?= URLROOT ?>/riwayat/detail/<?= $data['event']->id ?>/peserta/<?= $peserta->id ?>" class="btn btn-link"><i class="bi bi-eye"></i></a>
+                        <?php
+                        if ($data['event']->aktif) {
+                        ?>
+                          <a href="#" class="btn btn-link"><i class="bi bi-pencil"></i></a>
+                          <a href="#" class="btn btn-link"><i class="bi bi-trash"></i></a>
+                        <?php } ?>
                       </td>
                     </tr>
                   <?php

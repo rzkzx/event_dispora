@@ -65,49 +65,60 @@ class Riwayat extends Controller
     }
   }
 
-  public function detail($id = '')
+  public function detail($id = '', $params = '', $id2 = '')
   {
-    if ($_SESSION['level'] == 'peserta') {
-      $riwayat = $this->eventModel->getRiwayatPesertaByIdEvent($id);
-      $event = $this->eventModel->getById($id);
-
+    $event = $this->eventModel->getById($id);
+    if ($event) {
+      //if cover not available
       if ($event->cover) {
         $event->cover = $event->cover;
       } else {
         $event->cover = 'noimage.jpg';
       }
 
-      if ($riwayat) {
-        $data = [
-          'title' => 'Data Pendaftaran Event',
-          'riwayat' => $riwayat,
-          'event' => $event
-        ];
+      if ($_SESSION['level'] == 'peserta') {
+        $riwayat = $this->eventModel->getRiwayatPesertaByIdEvent($id);
+        if ($riwayat) {
+          $data = [
+            'title' => 'Data Pendaftaran Event',
+            'riwayat' => $riwayat,
+            'event' => $event
+          ];
 
-        $this->view('riwayat/data_peserta', $data);
+          $this->view('riwayat/data_peserta', $data);
+        } else {
+          return redirect('riwayat');
+        }
       } else {
-        return redirect('riwayat');
+        if ($params == 'peserta') {
+          $peserta = $this->eventModel->getPesertaDelegasiById($id2);
+          $data = [
+            'title' => 'Data Peserta Pendaftaran Event',
+            'event' => $event,
+            'peserta' => $peserta
+          ];
+
+          $this->view('riwayat/data_delegasi', $data);
+        } else {
+          $peserta = $this->eventModel->getRiwayatPesertaDelegasiByIdEvent($id);
+          if ($peserta) {
+            //replace new line on text mysql to <br> html
+            $event->deskripsi = preg_replace("/\r\n|\r|\n/", '<br/>', $event->deskripsi);
+
+            $data = [
+              'title' => 'Data Pendaftaran Event',
+              'event' => $event,
+              'peserta' => $peserta
+            ];
+
+            $this->view('riwayat/detail_delegasi', $data);
+          } else {
+            return redirect('riwayat');
+          }
+        }
       }
     } else {
-      $event = $this->eventModel->getById($id);
-      $peserta = $this->eventModel->getRiwayatPesertaDelegasiByIdEvent($id);
-
-      if ($event->cover) {
-        $event->cover = $event->cover;
-      } else {
-        $event->cover = 'noimage.jpg';
-      }
-
-      //replace new line on text mysql to <br> html
-      $event->deskripsi = preg_replace("/\r\n|\r|\n/", '<br/>', $event->deskripsi);
-
-      $data = [
-        'title' => 'Data Pendaftaran Event',
-        'event' => $event,
-        'peserta' => $peserta
-      ];
-
-      $this->view('riwayat/detail_delegasi', $data);
+      return redirect('riwayat');
     }
   }
 }
