@@ -64,4 +64,32 @@ class Riwayat extends Controller
       $this->view('riwayat/index', $data);
     }
   }
+
+  public function detail($id = '')
+  {
+    if ($_SESSION['level'] == 'peserta') {
+      $riwayat = $this->eventModel->getRiwayatPesertaByIdEvent($id);
+      $event = $this->eventModel->getById($id);
+
+      if ($event->cover) {
+        $event->cover = $event->cover;
+      } else {
+        $event->cover = 'noimage.jpg';
+      }
+
+      if ($riwayat) {
+        $data = [
+          'title' => 'Data Pendaftaran Event',
+          'riwayat' => $riwayat,
+          'event' => $event
+        ];
+
+        $this->view('riwayat/data_peserta', $data);
+      } else {
+        return redirect('riwayat');
+      }
+    } else {
+      return redirect('riwayat');
+    }
+  }
 }

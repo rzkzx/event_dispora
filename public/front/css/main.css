@@ -1761,7 +1761,7 @@ section {
   color: var(--color-primary);
 }
 
-.contact .php-pesan-form {
+.contact .php-email-form {
   width: 100%;
   height: 100%;
   background: #fff;
@@ -1770,11 +1770,11 @@ section {
   border-radius: 0 10px 10px 0;
 }
 
-.contact .php-pesan-form .form-group {
+.contact .php-email-form .form-group {
   padding-bottom: 8px;
 }
 
-.contact .php-pesan-form .error-message {
+.contact .php-email-form .error-message {
   display: none;
   color: #fff;
   background: #df1529;
@@ -1783,11 +1783,11 @@ section {
   font-weight: 600;
 }
 
-.contact .php-pesan-form .error-message br + br {
+.contact .php-email-form .error-message br + br {
   margin-top: 25px;
 }
 
-.contact .php-pesan-form .sent-message {
+.contact .php-email-form .sent-message {
   display: none;
   color: #fff;
   background: #f3d893;
@@ -1796,14 +1796,14 @@ section {
   font-weight: 600;
 }
 
-.contact .php-pesan-form .loading {
+.contact .php-email-form .loading {
   display: none;
   background: #fff;
   text-align: center;
   padding: 15px;
 }
 
-.contact .php-pesan-form .loading:before {
+.contact .php-email-form .loading:before {
   content: "";
   display: inline-block;
   border-radius: 50%;
@@ -1816,30 +1816,30 @@ section {
   animation: animate-loading 1s linear infinite;
 }
 
-.contact .php-pesan-form input,
-.contact .php-pesan-form textarea {
+.contact .php-email-form input,
+.contact .php-email-form textarea {
   border-radius: 0;
   box-shadow: none;
   font-size: 14px;
 }
 
-.contact .php-pesan-form input[type="text"],
-.contact .php-pesan-form input[type="email"],
-.contact .php-pesan-form textarea {
+.contact .php-email-form input[type="text"],
+.contact .php-email-form input[type="email"],
+.contact .php-email-form textarea {
   padding: 12px 15px;
 }
 
-.contact .php-pesan-form input[type="text"]:focus,
-.contact .php-pesan-form input[type="email"]:focus,
-.contact .php-pesan-form textarea:focus {
+.contact .php-email-form input[type="text"]:focus,
+.contact .php-email-form input[type="email"]:focus,
+.contact .php-email-form textarea:focus {
   border-color: var(--color-primary);
 }
 
-.contact .php-pesan-form textarea {
+.contact .php-email-form textarea {
   padding: 10px 12px;
 }
 
-.contact .php-pesan-form input[type="submit"] {
+.contact .php-email-form button[type="submit"] {
   background: var(--color-primary);
   border: 0;
   padding: 14px 45px;
@@ -1848,7 +1848,7 @@ section {
   border-radius: 50px;
 }
 
-.contact .php-pesan-form input[type="submit"]:hover {
+.contact .php-email-form button[type="submit"]:hover {
   background: rgba(220, 178, 9, 0.8);
 }
 
@@ -2705,6 +2705,20 @@ section {
 
 .footer .copyright {
   text-align: center;
+  align-items: center;
+}
+.footer .credits span {
+  color: white;
+}
+
+.footer .credits img{
+  max-height: 40px;
+  margin-right: 4px;
+  align-items: center;
+}
+
+.footer .credits .logo{
+  align-items: center;
 }
 
 .footer .credits {
@@ -2716,6 +2730,7 @@ section {
 .footer .credits a {
   color: #fff;
 }
+
 
 /* Profil page */
 /* .profile .profile-card img {
@@ -2792,4 +2807,98 @@ Bordered Tabs
   background-color: #fff;
   color: var(--color-primary);
   border-bottom: 2px solid var(--color-primary);
+}
+
+
+
+/* ====================================
+ laman detail_datapeserta
+============================== */
+
+
+.blog .container .service-item {
+  padding: 40px;
+  background: #fff;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.blog .container .image img {
+  color: var(--color-default);
+  font-size: 56px;
+  transition: ease-in-out 0.3s;
+  z-index: 2;
+  position: relative;
+  height: 150px;
+  width: 500px;
+}
+
+.blog .container .service-item {
+  padding: 40px;
+  background: #fff;
+  height: 100%;
+  border-radius: 10px;
+}
+
+
+.blog .container .service-item .icon:before {
+  position: absolute;
+  content: "";
+  height: 100%;
+  width: 100%;
+  background: #eeeeee;
+  border-radius: 50px;
+  z-index: 1;
+  top: 10px;
+  right: -20px;
+  transition: 0.3s;
+}
+
+.blog .container  .service-item h3 {
+  color: var(--color-default);
+  font-weight: 700;
+  margin: 0 0 20px 0;
+  padding-bottom: 8px;
+  font-size: 22px;
+  position: relative;
+  display: inline-block;
+  border-bottom: 4px solid #eeeeee;
+  transition: 0.3s;
+}
+
+.blog .container  .service-item p {
+  line-height: 24px;
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+.blog .container  .service-item .readmore {
+  margin-top: 15px;
+  display: inline-block;
+  color: var(--color-primary);
+}
+
+.blog .container  .meta-top {
+  margin-bottom: 20px;
+  color: #6c757d;
+}
+
+.blog .container  .meta-top ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+.blog .container .meta-top ul li + li {
+  padding-left: 20px;
+}
+
+.blog .container  .meta-top i {
+  font-size: 16px;
+  margin-right: 8px;
+  line-height: 0;
+  color: var(--color-primary);
 }

@@ -47,7 +47,7 @@
                   if ($data['event']->jenjang == 'Umum') {
                     if ($_SESSION['level'] == 'peserta') {
                       if ($data['pendaftaran']) {
-                        echo '<a href="' . URLROOT . '/profil' . '" class="btn btn-secondary px-4">Lihat Data Pendaftaran</a>';
+                        echo '<a href="' . URLROOT . '/riwayat/detail/' . $data['event']->id . '" class="btn btn-secondary px-4">Lihat Data Pendaftaran</a>';
                       } else {
                         echo '<a href="' . URLROOT . '/event/pendaftaran/' . $data['event']->id . '" class="btn btn-warning px-4">Daftar Event</a>';
                       }
