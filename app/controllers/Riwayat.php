@@ -90,6 +90,7 @@ class Riwayat extends Controller
           return redirect('riwayat');
         }
       } else {
+        // show detail peserta
         if ($params == 'peserta') {
           $peserta = $this->eventModel->getPesertaDelegasiById($id2);
           $data = [
@@ -99,6 +100,21 @@ class Riwayat extends Controller
           ];
 
           $this->view('riwayat/data_delegasi', $data);
+
+          //delete peserta
+        } elseif ($params == 'delete') {
+          //if event get posted by submit
+          if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if ($this->eventModel->deletePendaftarDelegasi($id2)) {
+              echo 'Berhasil hapus data pendaftar';
+            } else {
+              echo 'Gagal hapus pendaftar';
+            }
+          } else {
+            return redirect('admin/event');
+          }
+
+          //show detail riwayat event
         } else {
           $peserta = $this->eventModel->getRiwayatPesertaDelegasiByIdEvent($id);
           if ($peserta) {

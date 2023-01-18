@@ -457,4 +457,26 @@ class EventModel
       return false;
     }
   }
+
+  public function deletePendaftarDelegasi($id)
+  {
+    $query = "SELECT * FROM " . $this->daftarDelegasi . " WHERE id=:id";
+    $this->db->query($query);
+    $this->db->bind('id', $id);
+    $peserta = $this->db->single();
+
+    if ($peserta->upload_identitas) {
+      unlink("../public/assets/file/identitas/" . $peserta->upload_identitas);
+    }
+    if ($peserta->berkas_syarat) {
+      unlink("../public/assets/file/syarat/" . $peserta->berkas_syarat);
+    }
+
+    $query = "DELETE FROM " . $this->daftarDelegasi . " WHERE id=:id";
+    $this->db->query($query);
+    $this->db->bind('id', $id);
+    $this->db->execute();
+
+    return $this->db->rowCount();
+  }
 }

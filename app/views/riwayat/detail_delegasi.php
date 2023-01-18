@@ -102,7 +102,7 @@
                         if ($data['event']->aktif) {
                         ?>
                           <a href="#" class="btn btn-link"><i class="bi bi-pencil"></i></a>
-                          <a href="#" class="btn btn-link"><i class="bi bi-trash"></i></a>
+                          <button type="button" class="btn btn-link" id="btnDelete" data-id="<?= $peserta->id ?>"><i class="bi bi-trash"></i></button>
                         <?php } ?>
                       </td>
                     </tr>
@@ -123,3 +123,48 @@
 
 
 <?php require APPROOT . '/views/layouts/footer.php'; ?>
+
+<script>
+  $(document).ready(function() {
+    alertConfirmation();
+  });
+
+  function alertConfirmation() {
+    $(document).delegate("#btnDelete", "click", function() {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Hapus data ini?',
+        showDenyButton: false,
+        showCancelButton: true,
+        confirmButtonText: 'Hapus',
+        cancelButtonText: 'Batal'
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+
+          var id = $(this).attr('data-id');
+
+          // Ajax config
+          $.ajax({
+            type: "POST", //we are using GET method to get data from server side
+            url: '<?= URLROOT ?>/riwayat/detail/<?= $data['event']->id ?>/delete/' + id, // get the route value
+            beforeSend: function() { //We add this before send to disable the button once we submit it so that we prevent the multiple click
+
+            },
+            success: function(response) { //once the request successfully process to the server side it will return result here
+              // Reload lists of employees
+              Swal.fire(response, response, 'success').then((result) => {
+                if (result.isConfirmed) {
+                  location.reload();
+                }
+              });
+            }
+          });
+
+        } else if (result.isDenied) {
+          Swal.fire('Perubahan tidak disimpan', '', 'info')
+        }
+      });
+    });
+  }
+</script>
