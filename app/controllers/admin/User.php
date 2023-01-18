@@ -52,21 +52,41 @@ class User extends Controller
   }
 
   // Akun Instansi Controller
-  public function peserta()
+  public function peserta($params = '', $id = '')
   {
     if (Middleware::isAdmin()) {
-      // get data all event
-      $users = $this->userModel->getUserPeserta();
+      if ($params == 'detail') {
+        $peserta = $this->userModel->getPesertaByIdUser($id);
+        $user = $this->userModel->getUserById($id);
 
-      $data = [
-        'title' => 'Akun Peserta',
-        'menu' => 'Pengguna',
-        'submenu' => 'Akun Peserta',
-        'users' => $users
-      ];
+        if ($peserta) {
+          $data = [
+            'title' => 'Detail Akun Peserta',
+            'menu' => 'Pengguna',
+            'submenu' => 'Akun Peserta',
+            'peserta' => $peserta,
+            'user' => $user
+          ];
 
-      // call view
-      $this->view('admin/pengguna/peserta', $data);
+          // call view
+          $this->view('admin/pengguna/detail_peserta', $data);
+        } else {
+          return redirect('admin/user/peserta');
+        }
+      } else {
+        // get data all event
+        $users = $this->userModel->getUserPeserta();
+
+        $data = [
+          'title' => 'Akun Peserta',
+          'menu' => 'Pengguna',
+          'submenu' => 'Akun Peserta',
+          'users' => $users
+        ];
+
+        // call view
+        $this->view('admin/pengguna/peserta', $data);
+      }
     } else {
       return redirect('admin/login');
     }

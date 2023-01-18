@@ -96,6 +96,16 @@ class UserModel
     return $row;
   }
 
+  public function getPesertaByIdUser($id)
+  {
+    $this->db->query('SELECT * FROM user_peserta WHERE id_user = :id');
+    $this->db->bind(':id', $id);
+
+    $row = $this->db->single();
+
+    return $row;
+  }
+
   public function add($data, $file)
   {
     $this->db->query('SELECT * FROM users WHERE username = :username');

@@ -60,7 +60,7 @@
                         <i class="dw dw-more"></i>
                       </a>
                       <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                        <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
+                        <a class="dropdown-item" href="<?= URLROOT; ?>/admin/user/peserta/detail/<?= $user->id_user ?>"><i class="dw dw-eye"></i> View</a>
                         <a class="dropdown-item" href="<?= URLROOT; ?>/admin/user/editPeserta/<?= $user->id_user ?>"><i class="dw dw-edit2"></i> Edit</a>
                         <button type="button" class="dropdown-item" id="btnDelete" data-id="<?= $user->id_user ?>"><i class="dw dw-delete-3"></i> Delete</button>
                       </div>
