@@ -89,7 +89,25 @@ class Riwayat extends Controller
         return redirect('riwayat');
       }
     } else {
-      return redirect('riwayat');
+      $event = $this->eventModel->getById($id);
+      $peserta = $this->eventModel->getRiwayatPesertaDelegasiByIdEvent($id);
+
+      if ($event->cover) {
+        $event->cover = $event->cover;
+      } else {
+        $event->cover = 'noimage.jpg';
+      }
+
+      //replace new line on text mysql to <br> html
+      $event->deskripsi = preg_replace("/\r\n|\r|\n/", '<br/>', $event->deskripsi);
+
+      $data = [
+        'title' => 'Data Pendaftaran Event',
+        'event' => $event,
+        'peserta' => $peserta
+      ];
+
+      $this->view('riwayat/detail_delegasi', $data);
     }
   }
 }

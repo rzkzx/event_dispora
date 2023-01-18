@@ -427,6 +427,16 @@ class EventModel
     return $result;
   }
 
+  public function getRiwayatPesertaDelegasiByIdEvent($id)
+  {
+    $this->db->query('SELECT * FROM ' . $this->daftarDelegasi . ' WHERE id_event=:id_event AND id_pegawai=:id_pegawai ORDER BY id DESC');
+    $this->db->bind('id_event', $id);
+    $this->db->bind('id_pegawai', $_SESSION['user_id']);
+    $result = $this->db->resultSet();
+
+    return $result;
+  }
+
   public function konfirmasiPeserta($jenjang, $id, $status)
   {
     if ($jenjang == 'Umum') {
