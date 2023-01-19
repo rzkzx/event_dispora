@@ -25,6 +25,7 @@ class Saran extends Controller
     $data = [
       'title' => 'Kritik dan Tanya',
       'menu' => 'Saran',
+      'submenu' => '',
       'saran' => $saran
     ];
 
@@ -42,6 +43,7 @@ class Saran extends Controller
       $data = [
         'title' => 'Detail Kritik dan Tanya',
         'menu' => 'Saran',
+        'submenu' => '',
         'saran' => $saran
       ];
 

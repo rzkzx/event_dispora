@@ -35,6 +35,7 @@ class Dashboard extends Controller
     $data = [
       'title' => 'Dashboard',
       'menu' => 'Dashboard',
+      'submenu' => '',
       'event' => $event,
       'countEvent' => $countEvent,
       'jumlahPeserta' => $jumlahPeserta,
