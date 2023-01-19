@@ -101,7 +101,7 @@
                         <?php
                         if ($data['event']->aktif) {
                         ?>
-                          <a href="#" class="btn btn-link"><i class="bi bi-pencil"></i></a>
+                          <a href="<?= URLROOT ?>/riwayat/detail/<?= $data['event']->id ?>/edit/<?= $peserta->id ?>" class="btn btn-link"><i class="bi bi-pencil"></i></a>
                           <button type="button" class="btn btn-link" id="btnDelete" data-id="<?= $peserta->id ?>"><i class="bi bi-trash"></i></button>
                         <?php } ?>
                       </td>

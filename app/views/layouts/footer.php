@@ -86,6 +86,11 @@
 <script src="<?= URLROOT; ?>/back/plugins/sweetalert2/sweetalert2.min.js"></script>
 <!-- Template Main JS File -->
 <script src="<?= URLROOT; ?>/front/js/main.js"></script>
+<script>
+  $('div.alert .close').on('click', function() {
+    $(this).parent().alert('close');
+  });
+</script>
 
 </body>
 

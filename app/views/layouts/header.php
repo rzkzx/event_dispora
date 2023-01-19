@@ -92,6 +92,36 @@
       background-repeat: no-repeat;
       background-position: center;
     }
+
+    /* edit-data-pendaftaran style */
+    .edit-data-pendaftaran .file-input-group {
+      border: 1px solid #2b2b2b;
+      border-style: dashed;
+      border-radius: 10px;
+      padding: 10px;
+    }
+
+    .edit-data-pendaftaran .file-input-group .btn-input-group {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+
+    /* flash alert styling */
+    .alert-dismissible {
+      position: relative;
+    }
+
+    .alert-dismissible button.close {
+      background: none;
+      border: none;
+      font-weight: bold;
+      font-size: 1.5rem;
+      position: absolute;
+      right: 1px;
+      top: 0;
+      color: #2b2b2b;
+    }
   </style>
 </head>
 

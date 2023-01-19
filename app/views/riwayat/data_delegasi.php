@@ -55,6 +55,7 @@
               <hr>
             </div>
             <div class="container">
+              <?php flash() ?>
               <div class="row">
                 <div class="col">
                   <h6><b>Nama Lengkap</b></h6>
@@ -199,7 +200,7 @@
               <div class="mt-4">
                 <?php
                 if ($data['event']->aktif) {
-                  echo '<a href="#" class="btn btn-warning">Edit Data Pendaftaran</a>';
+                  echo '<a href="' . URLROOT . '/riwayat/detail/' . $data['event']->id . '/edit/' . $data['peserta']->id . '" class="btn btn-warning">Edit Data Pendaftaran</a>';
                 }
                 ?>
               </div>
