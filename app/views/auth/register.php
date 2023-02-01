@@ -73,8 +73,7 @@
                 <div class="col-12">
                   <label for="tgl_lahir" class="form-label">Tanggal Lahir</label>
                   <input type="date" name="tgl_lahir" class="form-control" id="tgl_lahir" required />
-                  <div class="invalid-feedback">
-                    Mohon isi tanggal lahir anda!
+                  <div class="invalid-feedback" id="tglLahirFeedback">
                   </div>
                 </div>
 
@@ -184,6 +183,19 @@
   }
 
   $(document).ready(function() {
+
+    // validasi umur
+    $("#tgl_lahir").change(function() {
+      const today = new Date();
+      const dob = new Date($("#tgl_lahir").val());
+      const age = Math.floor((today - dob) / (365.25 * 24 * 60 * 60 * 1000));
+      if (age < 18) {
+        $("#tgl_lahir").addClass('is-invalid');
+        $("#tglLahirFeedback").html('Umur anda harus 18 tahun keatas');
+      } else {
+        $("#tgl_lahir").removeClass('is-invalid');
+      }
+    });
 
     // Validate Password
     $("#passInvalid").hide();

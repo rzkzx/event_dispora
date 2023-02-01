@@ -32,8 +32,8 @@
           <div class="sidebar">
             <div class=" profile-card pt-4 d-flex flex-column align-items-center">
               <img src="<?= URLROOT; ?>/assets/images/user/<?php echo ($_SESSION['foto']) ? $_SESSION['foto'] : 'man.png'; ?>" alt="Profile Image" class="rounded-circle ">
-              <div class="text-nama text-center" style="border:1px solid #ebeef4;margin-top:10px;padding:20px;border-radius:10px;">
-                <h6 class="text-uppercase"><?= $data['user']->nama ?></h6>
+              <div class="text-nama text-center" style="border-top:5px solid #ebeef4;margin-top:20px;padding:20px;">
+                <h6 class="text-uppercase" style="font-weight: bolder;"><?= $data['user']->nama ?></h6>
                 <h6 style="font-weight:normal;"><?= $data['user']->username  ?></h6>
               </div>
             </div>

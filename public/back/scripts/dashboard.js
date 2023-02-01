@@ -1,5 +1,5 @@
 var options = {
-	series: [80],
+	series: [100],
 	grid: {
 		padding: {
 			top: 0,
@@ -69,7 +69,7 @@ var options = {
 };
 
 var options2 = {
-	series: [70],
+	series: [100],
 	grid: {
 		padding: {
 			top: 0,
@@ -138,8 +138,9 @@ var options2 = {
 	}
 };
 
+var percent3 = $('#chart3').attr('data-percent');
 var options3 = {
-	series: [75],
+	series: [percent3],
 	grid: {
 		padding: {
 			top: 0,
@@ -208,8 +209,9 @@ var options3 = {
 	}
 };
 
+var percent4 = $('#chart4').attr('data-percent');
 var options4 = {
-	series: [85],
+	series: [percent4],
 	grid: {
 		padding: {
 			top: 0,

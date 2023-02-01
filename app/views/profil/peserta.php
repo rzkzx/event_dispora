@@ -37,8 +37,8 @@
               <div class="foto rounded-circle overflow-hidden" style="width: 200px; height: 200px;">
                 <img src="<?= URLROOT; ?>/assets/images/user/<?php echo ($_SESSION['foto']) ? $_SESSION['foto'] : 'man.png'; ?>" alt="Profile Image" style="object-fit:cover;width:100%;height:100%;max-width:100%;">
               </div>
-              <div class="text-nama text-center" style="border:1px solid #ebeef4;margin-top:10px;padding:20px;border-radius:10px;">
-                <h6 class="text-uppercase"><?= $data['user']->nama ?></h6>
+              <div class="text-nama text-center" style="border-top:5px solid #ebeef4;margin-top:20px;padding:20px;">
+                <h6 class="text-uppercase" style="font-weight: bolder;"><?= $data['user']->nama ?></h6>
                 <h6 style="font-weight:normal;"><?= $_SESSION['username']  ?></h6>
               </div>
             </div>

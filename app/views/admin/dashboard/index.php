@@ -47,7 +47,7 @@
           <div class="card-box height-100-p widget-style1">
             <div class="d-flex flex-wrap align-items-center">
               <div class="progress-data">
-                <div id="chart3"></div>
+                <div id="chart3" data-percent="<?= $data['eventAktif'] / $data['countEvent'] * 100; ?>"></div>
               </div>
               <div class="widget-data">
                 <div class="h4 mb-0"><?= $data['eventAktif'] ?></div>
@@ -60,7 +60,7 @@
           <div class="card-box height-100-p widget-style1">
             <div class="d-flex flex-wrap align-items-center">
               <div class="progress-data">
-                <div id="chart4"></div>
+                <div id="chart4" data-percent="<?= $data['eventSelesai'] / $data['countEvent'] * 100; ?>"></div>
               </div>
               <div class="widget-data">
                 <div class="h4 mb-0"><?= $data['eventSelesai'] ?></div>
